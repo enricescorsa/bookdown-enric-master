@@ -1,0 +1,33 @@
+\contentsline {chapter}{\numberline {1}Prefacio}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Indice de contenidos}{5}{section.1.1}
+\contentsline {chapter}{\numberline {2}Intro}{7}{chapter.2}
+\contentsline {section}{\numberline {2.1}Manejarse en el entorno de R}{7}{section.2.1}
+\contentsline {section}{\numberline {2.2}Variables}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Vectores}{8}{section.2.3}
+\contentsline {section}{\numberline {2.4}Tablas}{9}{section.2.4}
+\contentsline {section}{\numberline {2.5}Funciones}{10}{section.2.5}
+\contentsline {section}{\numberline {2.6}Paquetes}{11}{section.2.6}
+\contentsline {chapter}{\numberline {3}R para Explorar}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Leer datos}{13}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Leer datos de un archivo}{13}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Leer datos contenidos en un excel}{14}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Leer datos de una página web}{14}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Acomodar datos}{15}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Funciones base en R}{15}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Paquete dplyr}{16}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Limpiar textos}{17}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}R para Predecir}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Correlación}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Regresión}{20}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Regresión lineal}{20}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Regresión logística}{21}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Proyectar (Forecast)}{22}{section.4.3}
+\contentsline {chapter}{\numberline {5}R para Visualizar}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}Gráficos de dispersión}{27}{section.5.1}
+\contentsline {section}{\numberline {5.2}Histogramas}{34}{section.5.2}
+\contentsline {section}{\numberline {5.3}Redes}{35}{section.5.3}
+\contentsline {section}{\numberline {5.4}Mapas geográficos}{36}{section.5.4}
+\contentsline {chapter}{\numberline {6}R que R}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}Tutoriales}{43}{section.6.1}
+\contentsline {section}{\numberline {6.2}Obtener ayuda}{44}{section.6.2}
+\contentsline {chapter}{\numberline {7}Sumario}{45}{chapter.7}

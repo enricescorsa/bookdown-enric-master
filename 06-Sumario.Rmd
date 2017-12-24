@@ -1,0 +1,14 @@
+# Sumario
+
+Espero que este libro te haya servido para iniciarte en el análisis de datos con R y que hayas podido entrever sus grandes posibilidades analíticas. 
+
+No hemos hablado de otras muchas técnicas estadísticas posibles en R, desde opciones gráficas (incluso interactivas) a opciones para procesar contenidos textuales que en R pueden implementarse mediante paquetes como `tm`, `OpenNLP` o `tidytext` u otros, algoritmos de Aprendizaje automático, mediante paquetes como `e1071`, `randomForest` o `Caret`, entre muchos, muchos otros. Las  aplicaciones son infinitas. Nos queda todavía mucho que aprender.
+
+¿Te enganchó?
+
+A seguir pues, __¡R que R!__
+
+¡Muchas gracias!
+
+Enric Escorsa O'Callaghan
+

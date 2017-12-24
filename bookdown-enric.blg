@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: bookdown-enric.aux
+The style file: apalike.bst
+Database file #1: packages.bib
+Database file #2: book.bib
+Repeated entry---line 45 of file book.bib
+ : @manual{R-bookdown
+ :                   ,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in R-r
+(There was 1 error message)

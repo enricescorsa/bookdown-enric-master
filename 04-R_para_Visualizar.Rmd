@@ -1,0 +1,191 @@
+# R para Visualizar
+
+
+<br>
+
+> "There is no such thing as information overload. There is only bad design...."
+>
+> --- Edward Tufte
+
+<br>
+<br>
+
+
+En este capítulo veremos algunas opciones básicas para visualizar convenientemente nuestros datos.
+
+##Gráficos de dispersión
+
+Una primera forma de visualización, útil en muchos casos son los __gráficos de dispersión__ o _scatterplots_ en inglés. 
+Para generar muchos tipos de visualizaciones nos será sumamente útil el paquete __ggplot2__ [@R-ggplot2] creado por el señor [Hadley Wickham](http://hadley.nz/).
+Lo primero, cargémoslo:
+
+```{r chunk-ggplot}
+library(ggplot2) 
+```
+
+La opción más sencilla para visualizar nuestros datos es usar la función `qplot`
+dónde en los argumentos de la función pongo: la variable que quiero en el eje X, la que quiero en el eje Y, seguido de la tabla de los datos que estoy analizando (misdatos):
+
+```{r chunk-simpleqplot}
+qplot(Cromos, Edad, data=misdatos)
+```
+
+
+Puedo añadir una tercera variable (Nombre) para representarla por ejemplo mediante color:
+
+
+```{r chunk-qplotcolor}
+qplot(Cromos, Edad, data=misdatos, color=Nombre)
+```
+
+
+(nótese que la leyenda se me crea automáticamente).
+
+Otra utilidad conveniente a menudo a la hora de visualizar nuestros datos es hacer varias capas o particiones ( __facets__ ) para mostrar los datos en función de determinadas variables. Veámoslos por ejemplo en función del deporte practicado.
+
+```{r chunk-qplotfacet1}
+qplot(Cromos, Edad, data=misdatos, color=Nombre, facets=.~Deporte)
+```
+
+
+La opción `qplot` está bien para generar visualizaciones rápidas de nuestros datos,  pero cuando queremos tener más control estético podemos usar la expresión `ggplot` seguida de los datos y a continuación los parámetros estéticos que deseemos (que indicamos con `aes()`), más la forma (`geom`) de los datos (sean puntos, barras u otras formas)
+
+```{r chunk-ggplotgeom}
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point()
+plot
+```
+
+
+Así, por ejemplo puedo añadir estética de color a los puntos, bien como una constante:
+
+```{r chunk-geomconstant}
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point(color = "steelblue")
+plot
+```
+
+
+o bien como una variable (dónde el color es función del Sexo):
+
+```{r chunk-geomvariable} 
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point(aes(color=Sexo))
+plot
+```
+
+O el tamaño (size) es función del número de hermanos:
+
+```{r chunk-geomvariablesize} 
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point(aes(size=numerodehermanos))
+plot
+```
+ 
+##Histogramas
+
+Para representar un histograma simplemente usariamos en este caso en nuestra expresión la forma estética `geom_histogram`.
+
+```{r chunk-histogram, message=FALSE} 
+library(ggplot2)
+ggplot(misdatos, aes(numerodehermanos)) +
+  geom_histogram(binwidth=.5, fill="Steelblue", show.legend = FALSE)
+```
+
+Nótese que a efectos estéticos hemos representado el histograma ajustando el ancho de las barras (con `binwidth`) y rellendando de color (con `fill`).
+
+  
+  
+##Redes
+
+Eventualmente puede ser interesante visualizar datos que describen una red y percibir su estructura relacional.
+
+Con el paquete __igraph__ [@R-igraph] podemos leer una red cuya información tengamos expresada en forma de nodos y enlaces.
+
+En nuestro caso partimos de un arxivo de nodos que es una tabla de nombres de personas y un archivo de enlaces que es una tabla con tres columnas (nombre de una persona, nombre de otra persona con quien interacciona y número de cromos intercambiados).
+
+
+```{r chunk-readnetwork, message=FALSE, warning=FALSE} 
+#cargamos el paquete igraph
+library(igraph)
+
+#leemos archivos de nodos y de enlaces que tenemos en nuestro directorio
+nodos <- read.csv("_bookdown_files/grafo_nodos.csv", header=T, as.is=T)
+enlaces <- read.csv("_bookdown_files/grafo_enlaces.csv", header=T, as.is=T)
+```
+
+
+Ahora podemos visualizar la red con el paquete `igraph`.
+
+```{r chunk-plotnetwork} 
+#trasformamos los datos en objetos de red mediante la función graph.data.frame
+red <-graph.data.frame(enlaces, directed=TRUE, vertices = nodos)
+
+#representamos el grafo especificando varios criterios estéticos
+plot(red, layout=layout.fruchterman.reingold, vertex.size=9, 
+     vertex.label.color="grey20", vertex.label.dist=0.9, 
+     vertex.color="Steelblue", vertex.frame.color ="white", 
+     edge.arrow.size=0.5, edge.curved=0, vertex.label.font=9, 
+     vertex.label.cex=0.8)
+```
+
+Apreciamos un grafo resultante cuyos nodos son los nombres de las personas y los enlaces los vínculos que éstas establecen (en este caso intercambio de cromos).
+
+Podemos llegar a hacer grafos mucho más complejos que este: reflejar varias variables en ellos, distintos layouts, aplicar conceptos de la teoría de grafos (centralidad, cercanía, intermediacion) para entenderlos mejor, etc.
+
+Para aprender más acerca de representaciones de redes con R recomiendo leer los excelentes materiales al respecto de [Katya Ognyanova](http://kateto.net/).
+
+
+##Mapas geográficos
+
+También podemos representar en R mapas geográficos de varios modos; usamos paquetes como __ggmap__ [@R-ggmap], __tmap__ [@R-tmap] para representar los mapas y luego con paquetes como por ejemplo __rgdal__ [@R-rgdal] podemos importar perímetros geoespaciales de áreas geográficas o países (en forma de *shapefiles*) en R y localizarlos en el mapa con nuestros datos.
+
+Por ejemplo, podemos generar rápidamente un mapa de Europa con `tmap` con sólo indicar una región geográfica:
+```{r chunk-tmapeurope, warning=FALSE, message=FALSE} 
+library(tmap)
+#el paquete contiene una tabla con datos de los países europeos 
+data(Europe)
+qtm(Europe)
+```
+
+Alternativamente, con `ggmap` podríamos generar el mapa de una localización específica del siguiente modo:
+```{r chunk-ggmap, warning=FALSE, message=FALSE} 
+library(ggmap)
+#localizamos con longitud y latitud la zona que queremos
+cat <- c(lon = 1.6430518, lat = 41.6960344)
+#generamos el mapa indicando la fuente (google) y el zoom que queremos
+map <- get_map(location=cat, source="google", zoom=8)
+ggmap(map)
+```
+
+Si quisieramos otro tipo de representación (maptype) y color (por ejemplo en blanco y negro) indicaríamos:
+```{r chunk-ggmapbw, warning=FALSE, message=FALSE} 
+#el tipo de mapa de google puede ser “roadmap”, “terrain”, “satellite” o “hybrid”
+map <- get_map(location=cat, source="google", zoom=8, maptype="roadmap", color="bw")
+ggmap(map)
+```
+
+Si ahora quiero añadir un punto en el mapa (por ejemplo mi ciudad, Barcelona):
+```{r chunk-ggmapbcn, warning=FALSE, message=FALSE} 
+#añado la long/lat de Barcelona
+ggmap(map)+ geom_point (aes (x = 2.1734, y = 41.3851),  
+#e indico la transparencia (alpha), color y tamaño del punto
+alpha = .3, color="steelblue", size = 5)
+```
+
+Incluso puedo añadir datos al mapa; por ejemplo, los distritos de la ciudad.
+```{r chunk-bcnshp, warning=FALSE, message=FALSE} 
+#primero encuentro las shapefiles de los distritos de Barcelona en datos abiertos:
+#https://laura-an.carto.com/tables/shapefile_distrito_barcelona/public
+#me las descargo en mi directorio de trabajo
+
+#focalizo el mapa en Barcelona
+bcn <- c(lon = 2.1734, lat = 41.3851)
+map <- get_map(location=bcn, source="google", zoom=11, maptype="roadmap", color="bw")
+
+#cargo el paquete rgdal para importar las shapefiles de los distritos al mapa
+library(rgdal)
+shapefiles<-readOGR(dsn="_bookdown_files/shapefile_distrito_barcelona.shp",
+                    layer="shapefile_distrito_barcelona") 
+#lo represento en el mapa:
+ggmap(map)+ geom_polygon(aes(x = long, y = lat, group=id), 
+data = shapefiles, color = "white", fill = "orange", 
+alpha = .3, size = .2)
+```
+

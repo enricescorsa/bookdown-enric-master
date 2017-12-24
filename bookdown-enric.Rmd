@@ -1,0 +1,968 @@
+--- 
+title: "R que R"
+author: "Enric Escorsa O'Callaghan"
+date: "1/4/2017"
+site: bookdown::bookdown_site
+output: 
+ bookdown::gitbook
+ #bookdown::pdf_book
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: enricescorsa/bookdown-enric
+cover-image: fotoenric2.png
+description: "This is an introductory book on R programming language in Spanish written by Enric Escorsa"
+---
+
+<br>
+<br>
+<br>
+```{r chunk-image, echo = FALSE}
+knitr::include_graphics("fotoenric2.png")
+```
+
+
+Este trabajo de _Enric Escorsa O'Callaghan_ se ofrece bajo Licencia [Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 España (CC BY-NC-SA 4.0 ES)](https://creativecommons.org/licenses/by-nc-sa/4.0/es/) cuyo texto legal está disponible en https://creativecommons.org/licenses/by-nc-sa/4.0/es
+```{r chunk-cc, echo = FALSE}
+knitr::include_graphics("cc.png")
+```
+
+
+
+# Prefacio
+
+<br>
+
+
+> "Trabajando sobre los datos inmediatos de la realidad, nuestra consciencia elabora el universo en el que vivimos realmente"
+>
+> --- Aldous Huxley   
+
+<br>
+
+
+Este libro es una introducción muy básica y breve en español al lenguaje de programación estadística __R__. Está dirigido a no programadores (con ánimo de que empiecen a serlo un poquito cuando lo hayan leído).
+
+R permite obtener todo tipo de datos (estructurados, no estructurados, numéricos, textuales, etc.) de dondequiera que estén (bases de datos, tablas, páginas web, etc.) y aplicarles tratamientos y métricas estadísticas, así como generar todo tipo de visualizaciones que nos ayuden a describirlos y entenderlos mejor; pero también automatizar estos procesos, integrando distintas funciones, llegando a generar modelos para, por ejemplo, detectar patrones y asociaciones interesantes que estaban escondidas o hasta lograr predecir que ocurrirá, en base a determinadas tendencias.
+
+Todo ello, se puede hacer en R de una forma ágil, amigable, gratuita, fresca y no encorsetada, en el contexto de una enorme y dinámica comunidad global de usuarios que favorece la colaboración y el aprendizaje continuo, la usabilidad y reproducibilidad de los resultados que se generan y la incorporación de los últimos avances científicos en análisis de datos y aprendizaje automático (*Machine Learning*).
+
+Este libro se escribió usando R -sí, ¡con R también podrás escribir libros!- mediante el método de escritura **Markdown**, que permite  ir creando los contenidos sin preocuparte del formato final y luego exportar fácilmente a los formatos deseados (por ejemplo: PDF, ePub, HTML para publicarlo en una web, etc.)
+
+Si quisieras escribir un libro como este desde R, lo puedes hacer instalándote el paquete __bookdown__ [@R-bookdown]:
+
+```{r eval=FALSE, echo=FALSE}
+devtools::install_github("rstudio/bookdown")
+```
+
+
+## Indice de contenidos
+
+El libro se estructura en los siguientes capítulos (si estás leyendo la versión web del libro a la izquierda de la pantalla verás una barra de navegación que puedes usar para para avanzar en los contenidos):
+
+
+- Capítulo \@ref(prefacio): __Prefacio__
+
+- Capítulo \@ref(intro): __Introducción a R__
+
+- Capítulo \@ref(r-para-explorar): __R para explorar__
+
+- Capítulo \@ref(r-para-predecir): __R para predecir__
+
+- Capítulo \@ref(r-para-visualizar): __R para visualizar__
+
+- Capítulo \@ref(r-que-r): __R que R__
+
+
+
+
+
+<!--chapter:end:index.Rmd-->
+
+#Intro
+
+R [@R-r] es un lenguaje de programación estadística open source, versátil y potente. Puede descargarse desde la web del proyecto [__R-project__](https://www.r-project.org) https://www.r-project.org.
+
+Una vez instalado uno puede ya empezar a usarlo directamente desde su consola, pero la opción más conveniente para trabajar con R es instalarse acto seguido el Interfaz o entorno de desarrollo integrado (IDE) desarrollado por [__RStudio__](https://www.rstudio.com) https://www.rstudio.com (también gratuito), que facilita mucho trabajar con distintos archivos, descargarse paquetes para facilitar la realización de todo tipo de funciones, generar visualizaciones y tenerlo todo ordenado y a mano.
+
+##Manejarse en el entorno de R
+
+¿Te lo descargaste ya? ¡fantástico! ábrelo pues y una vez en la consola puedes escribir líneas de código después del símbolo `>` o _command prompt_  y ejecutarlas una a una dándole a `Enter` 
+
+Si pruebas a escribir una operación sencilla como `3+4` y lo ejecutas obtienes el resultado.
+
+```{r chunk-sum}
+3+4
+```
+
+
+¡Bien! 
+También es conveniente usar la __flecha hacia arriba del teclado__ para ir a comandos escritos previamente (y así poder recuperar cosas para no tenerlas que volver a escribir)
+
+Luego puedes guardar las líneas de código que hayas escrito en un archivo con extension `.R` para abrirlo en otra ocasión desde el mismo R -o para enviarle a un amig@ y que lo abra en el suyo- y así poder ejecutarlas todas a la vez. Del mismo modo puedes buscar en internet código que otros hayan escrito y reusarlo. 
+¿no es mágico?
+
+Desde un archivo puedes poner el cursor delante de una línea y ejecutarla con `ctrl + Enter` o bien seleccionar unas cuantas líneas de código con el cursor y hacer lo mismo `ctrl + Enter` (o desde el menú hacer clic en `Run`)
+
+Con `Ctrl + A` puedes seleccionarlo todo y con `Ctrl + R` ejecutarlo todo.
+
+
+R distingue mayúsculas y minúsculas (algo que no conviene olvidar).
+
+##Variables
+
+En R puedo crear todo tipo de __variables__ asignando algo a un nombre mediante `<-`.
+
+Por ejemplo puedo crear una variable numérica escribiendo `x <- 1` u otro tipo de variable que puede ser, por ejemplo de caracteres textuales (_strings_) escribiendo `z <- "pepito"` Nótese que en este caso la pongo entrecomillada. Nótese, asimismo, que el nombre de las variables que creo lo asigno yo (les he llamado `X` y `Z` como podría haberles llamado `numerito` o `palabrita`).
+
+Ojo: los hay, no tan puristas con la gramática de R, que usan para asignar objetos `=` en vez de `<-`. En ambos casos funciona igual.
+
+##Vectores
+
+Un __vector__ es un objeto de un solo tipo de datos (puede ser númerico o de caracteres o de otras variables categóricas tales como factores, pero todos los elementos deben ser del mismo tipo)
+
+Puedo crear un vector usando `c()` (combine)
+
+```{r chunk-combine}
+c(1,2)
+```
+O también puedo crear un vector de números entre 10 y 20 usando `:`
+
+
+```{r chunk-vectorrang}
+c(10:20)
+```
+
+O un vector de nombres:
+
+```{r chunk-vectornames}
+c("pepito","grillo", "ternera")
+```
+
+Como he hecho antes, puedo asignar un vector a una variable
+`x <- (213:221)` y preguntar por sus propiedades: por ejemplo ¿qué clase de vector es? con la función `class()`
+```{r chunk-class}
+x <- (213:221)
+class(x)
+```
+`X` es un vector de números enteros (_integers_). 
+
+Nota: en R es importante tener en cuenta qué tipo de objetos manejamos, porque según qué tipo tenemos podemos hacer unas cosas u otras. Lo iremos viendo. Sigamos.
+<br>
+
+```{r chunk-lenght}
+#longitud (número de elementos que contiene)
+length(x)
+```
+Contiene 9 elementos.
+
+Nota: La almohadilla `#` se usa para comentar cosas que no queremos que se ejecuten en el código (todo lo que pongamos después de ella no se ejecutará). Comentar nuestros scripts de código es útil para que otros -¡incluidos nosotros mismos en el futuro!- entiendan al leerlo qué pretendíamos hacer. 
+
+Va, pongamos otra cita aquí; esta que me gusta:
+
+<br>
+
+> "Cualquier tonto puede escribir código que un ordenador entienda. Sólo los buenos programadores escriben código que los humanos entienden."
+>
+> --- Martin Fowler
+
+<br>
+<br>
+
+Sigamos preguntando cosas a una variable; por ejemplo si es numérica:
+
+```{r chunk-num}
+#¿es numérico?
+is.numeric(x) 
+```
+Verdadero, sí es numérico.
+
+La expresión `x[2]` me dará el segundo elemento del vector `x`
+```{r chunk-second, echo = FALSE}
+x[2]
+```
+
+Incluso puedo crear una variable nueva (`y`) que tenga los elementos del cuarto al octavo de `x`:
+```{r chunk-newvarrang}
+y <- x [4:8]
+y
+```
+
+
+
+##Tablas
+
+También puedo crear tablas mediante `data.frame` y luego ir listando las columnas de la tabla separadas por comas. Una columna sería: `nombre_variable=c(caso1, caso2, etc.)`. Una tabla con varias columnas se armaría del siguiente modo:
+
+```{r chunk-df}
+df<- data.frame( ID=1:4,
+     Nombre=c("Pepito","Juanito","Carlitos","Pedrito"),
+     Cromos=c(35,15,3,21), 
+     Edad=c(12,13,9,10),
+     Deporte=c("Waterpolo","Futbol","Waterpolo","Petanca"))     
+df
+```
+                    
+Entonces puedo preguntar a una tabla:
+```{r chunk-prifi}
+# muéstrame la primera fila
+df[1,] 
+```
+
+```{r chunk-terco}
+# muéstrame la tercera columna
+df[,3] 
+```
+que también puedo expresar como `df[[3]]`.
+
+Para ver una columna de una tabla también puedo usar el nombre de la tabla, seguido del símbolo del dólar `$`, seguido del nombre de la columna que me interesa:
+
+```{r chunk-coleda}
+# muéstrame la columna Edad
+df$Edad 
+```
+
+Ahora quiero fijarme sólo en los cromos y la edad de Pepito y Juanito:
+```{r chunk-fil}
+# filas 1 y 2, columnas 3 y 4
+df[1:2,3:4] 
+```
+
+O si sólo me interesan unas filas determinadas:
+```{r chunk-fil2}
+# las filas 1 y 3`
+df[c(1,3),] 
+```
+
+Estas opciones de filtrado son útiles porque me permiten por ejemplo crear una nueva tabla limpia -llamémosle `df2`- con sólo las filas que quiero de `df` (lo haria con la expresión `df2 <- df[c(1,3),]`).
+
+También puedo usar operadores:
+
+ - `==` igual que; 
+ - `>=` igual o mayor que; 
+ - `>` mayor que; 
+ - `&` AND; 
+ - `|` OR; 
+ - `!` NOT. 
+
+A ver ¿quién tiene más de 20 cromos?
+```{r chunk-mascromos}
+df[df$Cromos>20,2]
+```
+
+(nótese que abajo del resultado me indica que estos nombres son considerados como 4 valores distintos o niveles (`levels`); se trata, por tanto, de variables categóricas, también llamadas `Factores`)
+
+Vemos pues que los __data frames__ son tablas formadas por vectores y/o factores de la misma longitud. Tan sólo mencionar, por ahora, que en R, existen otros tipos de tablas; por ejemplo __arrays__ (tablas con _K_ dimensiones) o __matrices__ (array de 2 dimensiones). Otros objetos interesantes son las __listas__ (que pueden contener cualquier objeto, por ejemplo, varios vectores diferentes). Dejemoslo aquí de momento.
+
+
+##Funciones
+
+Hemos visto cómo usar funciones tales como por ejemplo `length()` para calcular el número de elementos que contiene una variable.
+
+Si quisiera cambiar el tipo de variable usaria funciones como `as.numeric()` para cambiar a variable numérica o `as.character()` para cambiar a variable de carácteres.
+
+Como vemos, una función se expresa con el nombre de la función seguida de los datos y las variables dónde queremos aplicar la función (los `argumentos`) que ponemos dentro de un paréntesis.
+
+Otras funciones útiles son:
+
+`nrow(df)` me dice el numero de filas de la tabla df
+
+`ncol(df)` me dice el numero de columnas de la tabla df
+
+Alternativamente, puedo usar la función `dim()` para preguntar por ambas dimensiones (filas y columnas):
+```{r chunk-dim}
+dim(df)
+```
+
+Con `dim` nos hemos informado de que la tabla `df` tiene 4 filas y 5 columnas.
+
+
+
+`summary(df)` me sirve para obtener un descripción de los principales parámetros estadisticos de `df`:
+```{r chunk-summary}
+summary(df)
+```
+
+`head()` me permite ver las primeras 6 filas de una tabla 
+
+`tail()` las 6 últimas
+
+Para obtener la mediana de Edad (cuarta columna en este caso) de `df` podriamos hacer:
+```{r chunk-mean}
+mean(df[,4])
+```
+
+
+Para repetir algo un número de veces, uso `rep()`:
+```{r chunk-repalgo}
+rep("algo", times=3)
+```
+
+
+Nota: Por defecto R transforma los carácteres de una tabla en factores (categorias) al leerla; esto puede causar cierta confusión porque hay casos, por ejemplo, en que el texto de una columna sí queremos que se entienda como una categoria (p.ej. hombre/mujer, región, tipología, etc.), pero otras veces podemos querer importar el texto como tal sin categorizarlo. Esto lo podemos controlar con el argumento `stringsAsFactors`; si queremos que nuestros valores sigan siendo carácteres y no queremos que se nos cambien a factores, lo debemos indicar específicamente con  `stringsAsFactors = False`.
+(muchos errores en R se deben a no tener claro qué tipo datos tratamos).
+
+
+##Paquetes
+
+Cuando uno crea en R una serie de funciones para hacer algo, lo puede guardar como un __paquete__ para que otros puedan reusarlo. Los conceptos de reutilización y reproducibilidad en un lenguaje de acceso abierto como R son sumamente importantes.
+Hay infinidad de paquetes disponibles que podemos utilizar para un sinfín de aplicaciones. Ante un problema analítico específico que debamos resolver, es muy probable que exista ya un paquete que resuelva ese mismo problema en el repositorio oficial de R, llamado [CRAN](https://cran.r-project.org/) o bien en otro repositorio importante de paquetes -más dedicado a tratamientos bioestadísticos- llamado [Bioconductor](https://www.bioconductor.org/) 
+
+Para usar un paquete en R, debo primero tenerlo instalado. 
+Lo hago escribiendo
+
+`install.packages("nombre_del_paquete")`
+
+y luego puedo cargarlo en cada sesión con
+
+`library(nombre_del_paquete)`
+ 
+
+<!--chapter:end:01-intro.Rmd-->
+
+# R para Explorar
+
+
+<br>
+
+> "Aquí tengo todos los datos que demuestran incuestionablemente que los datos no demuestran NADA...."
+>
+> --- Miguel Brieva
+
+<br>
+<br>
+
+La exploración de datos implica normalmente poder leer datos de fuentes y formatos diversos y acomodarlos según nos convenga. Estas tareas son, de hecho, las que suelen tomar más tiempo, de todo el proceso de análisis y asimilación de la información.
+
+
+##Leer datos
+
+Nos puede interesar leer y analizar datos de varios lados: de un archivo, una página web, una base de datos, etc.
+
+###Leer datos de un archivo
+
+Si queremos leer los datos de una tabla, por ejemplo, un archivo en formato `.csv` (valores delimitados por comas) que tenemos en nuestra carpeta o directorio, lo podemos hacer mediante el paquete __readr__ [@R-readr]
+
+
+```{r chunk-readr, message=FALSE}
+library(readr)
+misdatos<- read_csv("_bookdown_files/cromos.csv")
+misdatos
+```
+
+Nota: ojo al detalle del formato usado para indicar la ubicación del archivo: las barras son del tipo `/` (si usamos `\` no nos funcionará)
+
+De modo similar, leería los datos de un archivo `.txt` (datos no tabulares) usando la variante de la función de lectura `read_file`en mi expresión: `misdatos <- read_file("path/miarchivo.txt")`
+
+
+Habrá que fijarse bien y cuando sea necesario usar las distintas variantes de la función de lectura de __readr__ según cómo estén delimitados los datos en el archivo que queremos leer: sea por comas, por punto y coma, por separador (tab) o por cualquier otro delimitador.
+
+Mírate esta chuleta de Rstudio para entender todas las opciones de importación de datos: https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf 
+
+En caso de que no estén por defecto en la función de lectura que usamos estas opciones las deberemos especificar nosotros en los argumentos de la función; así como si tienen título o no, si queremos considerar los datos faltantes o no, etc. Siempre nos aseguraremos de que los datos se nos importan en el formato correcto.
+
+
+
+
+###Leer datos contenidos en un excel
+
+Si me interesan algunos datos que tengo en un excel; los puedo seleccionar, copiar (en el portapapeles) y luego voy a R y escribo: `misdatos <-read.delim ("clipboard")`.
+
+Ahora cuando lo que quiero es leer archivos enteros de excel desde R, usaré -de modo similar a cómo hemos visto para leer archivos csv- paquetes como __xlsx__ [@R-xlsx] o __readxl__ [@R-readxl] (paquete que es parte del conjunto integrado de paquetes __Tidyverse__) y sus respectivas funciones para leer los datos de las tablas de un excel: `read.xlsx ()` y `read_excel()`.
+
+
+
+###Leer datos de una página web
+
+Pongamos que me interesa una tabla en csv disponible en una página web. La puedo importar también con `misdatos <- read.csv("http://www..../archivo.csv")`
+
+Otro caso seria recuperar una parte de contenido que se encuentra en formato HTML en una página web a un formato estructurado que podamos analizar. La técnica asociada a ese fin se conoce como `webscrapping`. En R hay un paquete específico para hacer webscraping llamado __rvest__ [@R-rvest]
+
+Por ejemplo, imaginemos que soy un fan del waterpolo y quiero recuperar los resultados de la  competición de la categoría de másteres que se encuentran en la página de la federación catalana de natación:
+```{r chunk-webscrap, message=FALSE, warning=FALSE}
+#cargo el paquete rvest
+library(rvest)
+#asigno un nombre a la URL de la página que me interesa
+clasificacion_waterpolo <-
+  read_html("http://aquatics.cat/competicio/informacioCompeticio/2016/9/49/0")
+
+#recupero la segunda tabla que aparece en esta página indicando ".[[2]]" en la expresión:
+clasificacion_waterpolo %>%
+  html_nodes("table") %>%
+  .[[2]] %>%
+  html_table()
+```
+
+Ya tengo los resultados.
+
+##Acomodar datos
+
+Muy a menudo, sin embargo, los datos se nos presentan de forma bruta o imperfecta (formatos raros, valores que faltan, duplicidades, etc) o simplemente no están de la forma que queremos. Por ello es importante acomodarlos de un modo que sea adecuado o conveniente para su análisis.
+
+
+###Funciones base en R
+
+En R es posible usar funciones como `apply, lapply, sapply, tapply, etc.` para realizar operaciones comunes en el trabajo con matrices y tablas.
+
+ - __apply__, permite aplicar funciones a filas o columnas de una matriz
+
+Por ejemplo, aplicaríamos la funcion suma a las columnas de la matriz `df` con la expresión:
+`apply (df, 2, sum)` (aquí `1` se usa para indicar fila y `2` para indicar columna)
+
+ - __lapply__, extrae una parte de una matriz o tabla como una lista
+
+Por ejemplo, para extraer la primera fila de la tabla `df` usariamos:
+`lapply (df,"[", 1, )` y para extraer la segunda columna de la tabla `df`:
+`lapply (df,"[", , 2)`
+
+ - __tapply__, permite aplicar funciones a una variable, desglosada en base a otra.
+ 
+Por ejemplo, en el caso de nuestros datos, para calcular la mediana del número de cromos por sexo:
+```{r chunk-tapply, message=FALSE, warning=FALSE}
+tapply(misdatos$Cromos, misdatos$Sexo, mean)
+```
+Las chicas tienen de media más cromos que los chicos.
+
+Otras funciones disponibles en R base (sin necesidad de cargar paquetes adicionales) útiles para ordenar, filtrar o hacer transformaciones a nuestros datos son `sort()`, `subset()` o `transform()`.
+
+Prueba a buscar ayuda sobre estas funciones (por ejemplo escribiendo `?sort`).
+
+
+###Paquete dplyr 
+
+Más recientemente, en el marco de herramientas integradas que facilitan acomodar datos ([tidyverse](http://tidyverse.org/)), podemos usar varias funciones incluidas en el paquete __dplyr__ [@R-dplyr]. Las más importantes son:
+
+ - __filter()__ que permite filtrar observaciones por sus valores. 
+
+ - __arrange()__ para reordenar filas por variables
+
+ - __select()__ para tomar variables por sus nombres.
+
+ - __mutate()__ para canviar variables o crear nuevas variables con funciones de variables existentes. 
+ 
+ - __summarise()__ para sumarizar muchos valores en uno solo.
+ 
+
+Por ejemplo, para eliminar una columna de una tabla puedo usar `select()` y el operador negativo `-`:
+
+`df %>% select(-variable_inutil)` (siendo `variable_inutil` el nombre de la columna de `df` que no quiero)
+ 
+Para eliminar filas duplicadas puedo usar la función `distinct()`:
+
+`df_limpia <- df %>% distinct()` elimina filas duplicadas de `df` y asigna una nueva tabla (`df_limpia`) sin ellas (`distinct` és útil por tanto para hacer recuentos de variables descartando las que aparecen más de una vez)
+
+ 
+Con `filter()` (función similar a `subset` en R base) puedo por ejemplo retener determinadas observaciones de una columna (p.ej. un determinado rango de la variable `Edad`):
+ 
+ `df %>%
+ filter(Edad > 18)`
+ 
+Con `arrange()` (similar a `sort` en R base) ordenar datos en orden ascendente: `arrange(Edad)` o descendente : `arrange(desc(Edad))`
+
+
+Con `mutate()` (similar a `transform` en R base) puedo, por ejemplo, crear una nueva variable en base a otras: 
+
+`mutate(nueva_columna = col1 + col2)`
+
+Nota: vemos que una forma de expresar varias funciones a la vez de un modo eficiente y entendedor es usando el operador  `%>%` (conocido como `pipe` y disponible con los paquetes __magritte__ y __tidyverse__). Consiste básicamente en que, en vez de expresar una función que opere sobre unos datos como `f(datos)`, lo puedo hacer como `datos %>% f` y ello me permite ir concatenando varias funciones que quiera aplicar sobre esos mismos datos y que sea fácil de entender.
+
+Veámoslo en un ejemplo:
+
+```{r chunk-magritteex, message=FALSE, warning=FALSE}
+library(dplyr)
+misdatos %>%
+  #hago filtro de los que no son hijos únicos
+  filter(numerodehermanos > 1) %>% 
+  #creo nueva variable resultante de dividir Cromos por Edad
+  mutate(RatioCromosEdad = Cromos/Edad) %>% 
+  #creo nueva variable (Edaden5) sumándole 5 años a la variable Edad
+  transform(Edaden5 = Edad+5) %>% 
+  #ordeno por numero de cromos en orden descendente
+  arrange(desc(Cromos))%>% 
+  #mostrar las primeras 5 filas de la tabla resultante
+  head(5) 
+```
+
+
+
+###Limpiar textos
+
+Para limpiar textos a menudo nos interesa reemplazar carácteres de nuestros datos brutos por otros más sencillos. Para ello suelen ser muy útiles funciones como __gsub__. La expresamos como:
+
+`gsub(pattern, replacement, x, ignore.case = TRUE)`
+
+Dónde:
+
+ - `pattern`: carácteres a cambiar
+
+ - `replacement`: carácteres para remplazar
+
+ - `x`: nuestros datos
+
+ - `ignore.case`: ponemos TRUE cuando queremos ignorar si el patrón es mayúsculas o minúsculas
+
+Por ejemplo:
+
+```{r chunk-gsub}
+x <- "danger"
+gsub("d","",x)
+```
+
+La función __substr__ la podemos usar, por ejemplo, para eliminar n carácteres de un elemento. Si sólo queremos los carácteres del primero al onceavo:
+
+```{r chunk-substrrang}
+brutos <- "loquequieroloquenoquiero"
+limpios <- substr(brutos, 1, 11)
+print(limpios)
+```
+
+Esta misma expresión la podemos opcionalmente formar junto con `nchar` para indicar el número de carácteres que no queremos (empezando en este caso por atrás):
+
+```{r chunk-substrnchar}
+brutos <- "loquequieroloquenoquiero"
+limpios <- substr(brutos, 1, nchar (brutos)-13)
+print(limpios)
+```
+
+Otro paquete __stringr__ [@R-stringr] es también útil para manipular textos; de modo similar me permite tomar sólo los últimos carácteres de algo:
+
+```{r chunk-stringr-}
+library (stringr)
+brutos <- "smart"
+limpios <- str_sub(brutos,-3)
+print(limpios)
+```
+
+O extrer las palabras unidas por guiones bajos en una frase
+```{r chunk-stringr_}
+frase <- "el_último_de_la_fila"
+ str_split(frase,"_")
+```
+
+O considerar los NA que aparecen a menudo en una tabla o un vector de textos como datos faltantes y reemplazarlos por carácteres (entrecomillados) sin eliminarlos.
+```{r chunk-stringrNA}
+vector <- c("una_cosa",NA,"otra_cosa")
+str_replace_na(vector)
+```
+
+
+Nota: Quizás lo estés pensando; pues sí, en R una misma cosa puede hacerse de muchos modos distintos y usando paquetes distintos. Hay algunas funciones comunes y paquetes muy usados -las que estamos tratando de mostrar aquí- pero existen innumerables funciones para resolver problemas similares y uno siempre encontrará un paquete que haga la misma cosa pero de otro modo.
+
+<!--chapter:end:02-R_para_Explorar.Rmd-->
+
+# R para Predecir
+
+<br>
+
+> "The problem with experts is that they don't know what they don't know...."
+>
+> --- Nassim Taleb
+
+<br>
+<br>
+
+Con R es también sencillo aplicar modelos de regresión y correlación a nuestros datos, modelos estadísticos predictivos, etc.
+
+##Correlación
+
+No hemos comentado todavía que en el repositorio de R existen varios datasets de ejemplo con los que podemos trabajar y que podemos invocar con sólo llamarlos por su nombre. Uno de ellos es _mtcars_. Se trata de una base de datos de modelos de coches y sus distintas prestaciones o características técnicas expresadas como variables.
+
+Echémosle un vistazo:
+
+```{r chunk-head}
+head(mtcars)
+```
+
+Veamos,por ejemplo, con la ayuda de la función __cor()__ si existen correlaciones entre las variables _mpg_ (miles per galon), _cyl_ (cilindrada), etc.:
+```{r chunk-corr}
+# ponemos las variables mpg, cyl y disp como filas de una matriz:
+x <- mtcars[1:3] 
+# y hp, drat y wt como columnas de la matriz:
+y <- mtcars[4:6]
+#la funcion cor() nos da la correlacion en cada caso:
+cor(x, y)
+```
+
+Valores cercanos a 1 indican correlación positiva, cercanos a -1 correlación negativa y cercanos a 0 poca correlación.
+
+##Regresión
+
+Usamos regresión cuando tenemos un atributo `X` y queremos predecir una Respuesta o Variable de Salida `Y`, por ejemplo para saber cuanto mide alguien en función de cuanto pesa.
+
+
+###Regresión lineal
+
+Si tenemos sólo una variable o atributo hablamos de Regresión Linear Simple. 
+Cuando tenemos múltiples  atributos (ej. x1, x2, x3,..) sería Regresión Linear Múltiple.
+
+Se aplica la fórmula de la ecuación lineal: `y = a + b * x` y se trata de determinar los coeficientes `a` (determina dónde la línea intersecta con el eje Y) y `b` (pendiente de la línea). 
+
+Veamos este caso sencillo y tratemos de trazar la línea de regresión en base a alturas y pesos de una población de 10 personas:
+
+```{r chunk-regli}
+altura <- c(156, 155, 142, 177, 139, 156, 171, 169, 150, 175)
+peso <- c(83, 50, 53, 111, 45, 71, 75, 73, 60, 76)
+plot(peso, altura)
+plot(peso, altura, pch = 16, cex = 1.3, col = "orange", 
+     main = "Altura vs Peso", 
+     xlab = "Peso (kg)", 
+     ylab = "Altura (cm)")
+#modelo lineal
+lm(altura ~ peso) 
+#vemos que el intercept es 120.5135 y el pendiente 0.5522. 
+#Entonces finalmente trazamos la linea que mejor se ajusta (linea de regresión) 
+#en nuestro plot:
+abline(120.5135, 0.5522)
+#o sino también podemos visualizar la linea de regresion con:
+abline(lm(altura ~ peso))
+```
+
+
+###Regresión logística
+
+Otro tipo de regresión que nos es útil a menudo es la regresión logística. Se trata de un modelo de regresión dónde la variable dependiente es categórica. 
+Por ejemplo: la probabilidad de Aprobar (SI o NO) un examen en función del número de horas estudiadas, o la determinación de si un mail es _SPAM_ o no en función de varios atributos o variables independientes (p.ej. el número de palabras, si contiene imágenes, links, etc. )
+
+El modelo estima, por tanto, la probabilidad de una respuesta binaria (categórica) en base a uno o más predictores (o variables independientes) mediante una función logística.
+
+Probemos con un ejemplo tonto en base a nuestros datos: probabilidad de ser chica en función del número de cromos que tiene una persona.
+
+```{r chunk-rlogis}
+library(tidyverse)
+library(ggplot2)
+misdatos<-misdatos%>%
+#creo la variable Es_Chica
+  mutate(Es_chica=as.numeric(Sexo=="f"))
+#uso geom_smooth para definir la curva de tendencia de la regresión logística
+regresion_logistica<-ggplot(data= misdatos,aes(x= Cromos,y= Es_chica)) +
+  geom_smooth(method="glm",method.args=list(family="binomial")) +
+  ylab("¿Es chica? 0(No) -1(Sí)")
+regresion_logistica
+
+```
+
+
+##Proyectar (Forecast)
+
+Veamos ahora otro caso; supongamos que hemos ido anotando desde el año 2000 en un archivo las ventas de cada mes de nuestro negocio. Estaria bien poder predecir cuáles van a ser las de los proximos meses.
+
+Podemos usar el paquete __Forecast__ [@R-forecast] desarrollado y mantenido por Rob Hyndman, para aplicar modelos proyectivos conocidos (tales como el modelo ARIMA)
+
+Lo haríamos del siguiente modo:
+
+Leemos los datos a partir de nuestro archivo ventas.csv.
+
+`df <- read.csv("C:/.../ventas.csv")`
+
+Transformamos los datos en un objeto temporal (_time series object_) del tipo `ts` (indicamos que los datos son mensuales y que el periodo de inicio es Enero del 2000).
+
+Mostramos los datos:
+```{r chunk-dataforecast}
+df <- read.csv("_bookdown_files/ventas.csv")
+series <- ts(df, frequency = 12, start = c(2000,1))
+print(series)
+```
+
+Ploteamos la serie temporal. Nos aseguramos que el eje `y` empieza por cero.
+```{r chunk-plotseries}
+plot(series, ylim=c(0, 35000))
+```
+
+Generemos ahora una prevision para los próximos 20 periodos en base al modelo ARIMA. Lo hacemos en dos pasos:
+1) creamos un modelo usando la función `auto.arima` del paquete `forecast`
+2) generamos una proyección en base al modelo usando la función `forecast`
+
+Representamos gráficamente la previsión:
+
+```{r chunk-forecast, message=FALSE}
+require(forecast)
+model_arima <- auto.arima(series)
+fcast_arima <- forecast(model_arima, h = 20)
+plot(fcast_arima)
+```
+
+<!--chapter:end:03-R_para_predecir.Rmd-->
+
+# R para Visualizar
+
+
+<br>
+
+> "There is no such thing as information overload. There is only bad design...."
+>
+> --- Edward Tufte
+
+<br>
+<br>
+
+
+En este capítulo veremos algunas opciones básicas para visualizar convenientemente nuestros datos.
+
+##Gráficos de dispersión
+
+Una primera forma de visualización, útil en muchos casos son los __gráficos de dispersión__ o _scatterplots_ en inglés. 
+Para generar muchos tipos de visualizaciones nos será sumamente útil el paquete __ggplot2__ [@R-ggplot2] creado por el señor [Hadley Wickham](http://hadley.nz/).
+Lo primero, cargémoslo:
+
+```{r chunk-ggplot}
+library(ggplot2) 
+```
+
+La opción más sencilla para visualizar nuestros datos es usar la función `qplot`
+dónde en los argumentos de la función pongo: la variable que quiero en el eje X, la que quiero en el eje Y, seguido de la tabla de los datos que estoy analizando (misdatos):
+
+```{r chunk-simpleqplot}
+qplot(Cromos, Edad, data=misdatos)
+```
+
+
+Puedo añadir una tercera variable (Nombre) para representarla por ejemplo mediante color:
+
+
+```{r chunk-qplotcolor}
+qplot(Cromos, Edad, data=misdatos, color=Nombre)
+```
+
+
+(nótese que la leyenda se me crea automáticamente).
+
+Otra utilidad conveniente a menudo a la hora de visualizar nuestros datos es hacer varias capas o particiones ( __facets__ ) para mostrar los datos en función de determinadas variables. Veámoslos por ejemplo en función del deporte practicado.
+
+```{r chunk-qplotfacet1}
+qplot(Cromos, Edad, data=misdatos, color=Nombre, facets=.~Deporte)
+```
+
+
+La opción `qplot` está bien para generar visualizaciones rápidas de nuestros datos,  pero cuando queremos tener más control estético podemos usar la expresión `ggplot` seguida de los datos y a continuación los parámetros estéticos que deseemos (que indicamos con `aes()`), más la forma (`geom`) de los datos (sean puntos, barras u otras formas)
+
+```{r chunk-ggplotgeom}
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point()
+plot
+```
+
+
+Así, por ejemplo puedo añadir estética de color a los puntos, bien como una constante:
+
+```{r chunk-geomconstant}
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point(color = "steelblue")
+plot
+```
+
+
+o bien como una variable (dónde el color es función del Sexo):
+
+```{r chunk-geomvariable} 
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point(aes(color=Sexo))
+plot
+```
+
+O el tamaño (size) es función del número de hermanos:
+
+```{r chunk-geomvariablesize} 
+plot <- ggplot(misdatos, aes (Cromos, Edad)) + geom_point(aes(size=numerodehermanos))
+plot
+```
+ 
+##Histogramas
+
+Para representar un histograma simplemente usariamos en este caso en nuestra expresión la forma estética `geom_histogram`.
+
+```{r chunk-histogram, message=FALSE} 
+library(ggplot2)
+ggplot(misdatos, aes(numerodehermanos)) +
+  geom_histogram(binwidth=.5, fill="Steelblue", show.legend = FALSE)
+```
+
+Nótese que a efectos estéticos hemos representado el histograma ajustando el ancho de las barras (con `binwidth`) y rellendando de color (con `fill`).
+
+  
+  
+##Redes
+
+Eventualmente puede ser interesante visualizar datos que describen una red y percibir su estructura relacional.
+
+Con el paquete __igraph__ [@R-igraph] podemos leer una red cuya información tengamos expresada en forma de nodos y enlaces.
+
+En nuestro caso partimos de un arxivo de nodos que es una tabla de nombres de personas y un archivo de enlaces que es una tabla con tres columnas (nombre de una persona, nombre de otra persona con quien interacciona y número de cromos intercambiados).
+
+
+```{r chunk-readnetwork, message=FALSE, warning=FALSE} 
+#cargamos el paquete igraph
+library(igraph)
+
+#leemos archivos de nodos y de enlaces que tenemos en nuestro directorio
+nodos <- read.csv("_bookdown_files/grafo_nodos.csv", header=T, as.is=T)
+enlaces <- read.csv("_bookdown_files/grafo_enlaces.csv", header=T, as.is=T)
+```
+
+
+Ahora podemos visualizar la red con el paquete `igraph`.
+
+```{r chunk-plotnetwork} 
+#trasformamos los datos en objetos de red mediante la función graph.data.frame
+red <-graph.data.frame(enlaces, directed=TRUE, vertices = nodos)
+
+#representamos el grafo especificando varios criterios estéticos
+plot(red, layout=layout.fruchterman.reingold, vertex.size=9, 
+     vertex.label.color="grey20", vertex.label.dist=0.9, 
+     vertex.color="Steelblue", vertex.frame.color ="white", 
+     edge.arrow.size=0.5, edge.curved=0, vertex.label.font=9, 
+     vertex.label.cex=0.8)
+```
+
+Apreciamos un grafo resultante cuyos nodos son los nombres de las personas y los enlaces los vínculos que éstas establecen (en este caso intercambio de cromos).
+
+Podemos llegar a hacer grafos mucho más complejos que este: reflejar varias variables en ellos, distintos layouts, aplicar conceptos de la teoría de grafos (centralidad, cercanía, intermediacion) para entenderlos mejor, etc.
+
+Para aprender más acerca de representaciones de redes con R recomiendo leer los excelentes materiales al respecto de [Katya Ognyanova](http://kateto.net/).
+
+
+##Mapas geográficos
+
+También podemos representar en R mapas geográficos de varios modos; usamos paquetes como __ggmap__ [@R-ggmap], __tmap__ [@R-tmap] para representar los mapas y luego con paquetes como por ejemplo __rgdal__ [@R-rgdal] podemos importar perímetros geoespaciales de áreas geográficas o países (en forma de *shapefiles*) en R y localizarlos en el mapa con nuestros datos.
+
+Por ejemplo, podemos generar rápidamente un mapa de Europa con `tmap` con sólo indicar una región geográfica:
+```{r chunk-tmapeurope, warning=FALSE, message=FALSE} 
+library(tmap)
+#el paquete contiene una tabla con datos de los países europeos 
+data(Europe)
+qtm(Europe)
+```
+
+Alternativamente, con `ggmap` podríamos generar el mapa de una localización específica del siguiente modo:
+```{r chunk-ggmap, warning=FALSE, message=FALSE} 
+library(ggmap)
+#localizamos con longitud y latitud la zona que queremos
+cat <- c(lon = 1.6430518, lat = 41.6960344)
+#generamos el mapa indicando la fuente (google) y el zoom que queremos
+map <- get_map(location=cat, source="google", zoom=8)
+ggmap(map)
+```
+
+Si quisieramos otro tipo de representación (maptype) y color (por ejemplo en blanco y negro) indicaríamos:
+```{r chunk-ggmapbw, warning=FALSE, message=FALSE} 
+#el tipo de mapa de google puede ser “roadmap”, “terrain”, “satellite” o “hybrid”
+map <- get_map(location=cat, source="google", zoom=8, maptype="roadmap", color="bw")
+ggmap(map)
+```
+
+Si ahora quiero añadir un punto en el mapa (por ejemplo mi ciudad, Barcelona):
+```{r chunk-ggmapbcn, warning=FALSE, message=FALSE} 
+#añado la long/lat de Barcelona
+ggmap(map)+ geom_point (aes (x = 2.1734, y = 41.3851),  
+#e indico la transparencia (alpha), color y tamaño del punto
+alpha = .3, color="steelblue", size = 5)
+```
+
+Incluso puedo añadir datos al mapa; por ejemplo, los distritos de la ciudad.
+```{r chunk-bcnshp, warning=FALSE, message=FALSE} 
+#primero encuentro las shapefiles de los distritos de Barcelona en datos abiertos:
+#https://laura-an.carto.com/tables/shapefile_distrito_barcelona/public
+#me las descargo en mi directorio de trabajo
+
+#focalizo el mapa en Barcelona
+bcn <- c(lon = 2.1734, lat = 41.3851)
+map <- get_map(location=bcn, source="google", zoom=11, maptype="roadmap", color="bw")
+
+#cargo el paquete rgdal para importar las shapefiles de los distritos al mapa
+library(rgdal)
+shapefiles<-readOGR(dsn="_bookdown_files/shapefile_distrito_barcelona.shp",
+                    layer="shapefile_distrito_barcelona") 
+#lo represento en el mapa:
+ggmap(map)+ geom_polygon(aes(x = long, y = lat, group=id), 
+data = shapefiles, color = "white", fill = "orange", 
+alpha = .3, size = .2)
+```
+
+
+<!--chapter:end:04-R_para_Visualizar.Rmd-->
+
+# R que R
+
+He intentado mostrar en esta brevísima introducción a R, las funcionalidades básicas de este lenguaje de Programación estadística y algunas de las aplicaciones posibles. Esto ha sido sólo una muestra para despertar el apetito.
+Uno de los aspectos más positivos de este lenguaje es, precisamente, la activa comunidad de usuarios que existe a su entorno, gracias a la cual es muy fácil obtener soporte para problemas específicos y seguir aprendiendo mediante infinitud de recursos, muchos de ellos gratuitos.
+
+A continuación os dejo una lista de recursos para seguir aprendiendo R que R.
+
+
+##Tutoriales
+
+Algunos tutoriales interesantes para seguir aprendiendo son:
+
+ - [An Introduction to Statistical Learning with Applications in R (ISLR)](http://www-bcf.usc.edu/%7Egareth/ISL/)  de los profesores de Stanford __Trevor Hastie__ y __Rob Tibshirani__. Mucho conocimiento transmitido de un modo muy cálido y relajado.
+
+ - El libro [R for Data Science](http://r4ds.had.co.nz/) de __Hadley Wickham__, experto neozelandés que trabaja en RStudio. Toda una referencia actual en el desarrollo de este lenguage de programación y creador e integrador de gran cantidad de paquetes que facilitan todo el proceso analítico.
+
+ - [R-bloggers](https://www.r-bloggers.com), blog curado por __Tal Galili__, Doctor de la Universidad de Tel Aviv. Enrorme repositorio de posts de miembros de de la comunidad de R a nivel mundial.
+ 
+  - [twotorials](http://www.twotorials.com/) de
+__Anthony Damico__ una introducción muy ágil y divertida a R (videos de 2 minutos usando R en bruto ¡sin Rstudio!).
+
+ - [Data Science Central](http://www.datasciencecentral.com) de __Vincent Granville__
+  
+ - [KDnuggets](http://www.kdnuggets.com/) de __Gregory Piatetsky__
+ 
+ - [Kirk Borne](http://kirkborne.net/) científico de datos principal en la consultora pionera BoozAllen.
+ 
+ - [Analytics Vidhya](https://www.analyticsvidhya.com) blog de un equipo muy activo de analistas de Bombay, liderados por __Kunal Jail__ y que son además excelentes comunicadores y están siempre a la última de los avances en análisis de datos y Machine Learning, lenguajes de programación, etc. Como la gente de Rstudio y Datacamp, también publican útiles "chuletas" o [Cheat Sheets](https://www.analyticsvidhya.com/blog/2017/02/top-28-cheat-sheets-for-machine-learning-data-science-probability-sql-big-data/) Para principiantes pero también para usuarios más avanzados.
+ 
+ - [Variance Explained](http://varianceexplained.org/RData/) de David Robinson
+ videos cortos, super claros y explicativos.
+ 
+ - El libro [Tidy Textmining](http://tidytextmining.com/intro.html), escrito por [Julia Silge](https://juliasilge.com/) y David Robinson.
+ 
+ - [François Husson](http://math.agrocampus-ouest.fr/infoglueDeliverLive/membres/Francois.Husson), análisis de datos multivariantes y técnicas de clusterización con R.
+ 
+ - Para trabajar con predicciones en series temporales es muy útil el trabajo del profesor [Rob J Hyndman](https://www.otexts.org/fpp) de la Monash University, creador del paquete [Forectast](http://robjhyndman.com/software/forecast/")
+
+Otros recursos abiertos y gratuitos útiles son:
+
+ - Los excelentes materiales del curso [CSI E-109](http://cm.dce.harvard.edu/2014/01/14328/publicationListing.shtml) del Harvard Distance Education, impartido por los porfesores de Harvard _professors __Joe Blitzstein__, __Hanspeter Pfister__ y __Verena Kaynig-Fittkau__.
+
+ - Inventarios de recursos intersantes como [Data Science Masters](http://datasciencemasters.org) de __Clare Corthell__ de Summer.ai 
+
+ - [Learn Data Science](http://learnds.com/) de __Nitin Borwankar__.
+
+ - [Kaggle](https://www.kaggle.com) Plataforma, red social de científicos de datos y entorno para competiciones de proyectos de minería de datos, aprendizaje automático y modelos predicitivos, creada por Anthony Goldbloom.
+
+Coursera, Udacity y Datacamp, entre otros ponen al alcance de todos el poder iniciarse en ciencia de datos y R.
+
+Finalmente existen numerosos blogs personales de doctorandos, *practitioners* o usuarios apasionados de R que muestran modos de analizar datos para casos específicos. También es sumamente útil encontrar [__notebooks__](http://rmarkdown.rstudio.com/r_notebooks.html) donde se conjugan scripts de código y explicaciones de los mismos. 
+
+
+
+##Obtener ayuda
+
+Para obtener ayuda en R sobre una función -por ejemplo sobre `lm`- puedo hacer `?lm`, `help(lm)` o `help ("lm")` y me aparecerá la ayuda en el visor del entorno de R. 
+
+También puede ser conveniente buscar ejemplos de esa función con `example (lm)`.
+
+Cuando al ejecutar comandos nos aparece un error (mensaje de texto en rojo en la consola de R), es importante leerlo para aprender de él (¡como en la vida!)
+
+Otra gran opción que tenemos para resolver errores es buscar en la web de preguntas y respuestas [__stackoverflow__](https://stackoverflow.com) https://stackoverflow.com. 
+Si simplemente copiamos y pegamos el error que nos aparece en R en Google, es muy probable que nos diriga a stackoverflow. Y es muy probable también que en uno de sus foros alguien haya solucionado ya el problema que buscamos u otro similar que nos ayude a entender. De igual modo podemos contribuir allí y aclarar dudas a otros. Estos foros de preguntas y respuestas son, por lo general, una enorme fuente de aprendizaje y una inyección de optimismo en la humanidad.
+
+<!--chapter:end:05-R_que_R.Rmd-->
+
+# Sumario
+
+Espero que este libro te haya servido para iniciarte en el análisis de datos con R y que hayas podido entrever sus grandes posibilidades analíticas. 
+
+No hemos hablado de otras muchas técnicas estadísticas posibles en R, desde opciones gráficas (incluso interactivas) a opciones para procesar contenidos textuales que en R pueden implementarse mediante paquetes como `tm`, `OpenNLP` o `tidytext` u otros, algoritmos de Aprendizaje automático, mediante paquetes como `e1071`, `randomForest` o `Caret`, entre muchos, muchos otros. Las  aplicaciones son infinitas. Nos queda todavía mucho que aprender.
+
+¿Te enganchó?
+
+A seguir pues, __¡R que R!__
+
+¡Muchas gracias!
+
+Enric Escorsa O'Callaghan
+
+
+<!--chapter:end:06-Sumario.Rmd-->
+
+`r if (knitr:::is_html_output()) '# Referencias {-}'`
+
+<!--chapter:end:07-Referencias.Rmd-->
+

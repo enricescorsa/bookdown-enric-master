@@ -1,0 +1,79 @@
+--- 
+title: "R que R"
+author: "Enric Escorsa O'Callaghan"
+date: "1/4/2017"
+site: bookdown::bookdown_site
+output: 
+ bookdown::gitbook
+ #bookdown::pdf_book
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: enricescorsa/bookdown-enric
+cover-image: fotoenric2.png
+description: "This is an introductory book on R programming language in Spanish written by Enric Escorsa"
+---
+
+<br>
+<br>
+<br>
+```{r chunk-image, echo = FALSE}
+knitr::include_graphics("fotoenric2.png")
+```
+
+
+Este trabajo de _Enric Escorsa O'Callaghan_ se ofrece bajo Licencia [Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 España (CC BY-NC-SA 4.0 ES)](https://creativecommons.org/licenses/by-nc-sa/4.0/es/) cuyo texto legal está disponible en https://creativecommons.org/licenses/by-nc-sa/4.0/es
+```{r chunk-cc, echo = FALSE}
+knitr::include_graphics("cc.png")
+```
+
+
+
+# Prefacio
+
+<br>
+
+
+> "Trabajando sobre los datos inmediatos de la realidad, nuestra consciencia elabora el universo en el que vivimos realmente"
+>
+> --- Aldous Huxley   
+
+<br>
+
+
+Este libro es una introducción muy básica y breve en español al lenguaje de programación estadística __R__. Está dirigido a no programadores (con ánimo de que empiecen a serlo un poquito cuando lo hayan leído).
+
+R permite obtener todo tipo de datos (estructurados, no estructurados, numéricos, textuales, etc.) de dondequiera que estén (bases de datos, tablas, páginas web, etc.) y aplicarles tratamientos y métricas estadísticas, así como generar todo tipo de visualizaciones que nos ayuden a describirlos y entenderlos mejor; pero también automatizar estos procesos, integrando distintas funciones, llegando a generar modelos para, por ejemplo, detectar patrones y asociaciones interesantes que estaban escondidas o hasta lograr predecir que ocurrirá, en base a determinadas tendencias.
+
+Todo ello, se puede hacer en R de una forma ágil, amigable, gratuita, fresca y no encorsetada, en el contexto de una enorme y dinámica comunidad global de usuarios que favorece la colaboración y el aprendizaje continuo, la usabilidad y reproducibilidad de los resultados que se generan y la incorporación de los últimos avances científicos en análisis de datos y aprendizaje automático (*Machine Learning*).
+
+Este libro se escribió usando R -sí, ¡con R también podrás escribir libros!- mediante el método de escritura **Markdown**, que permite  ir creando los contenidos sin preocuparte del formato final y luego exportar fácilmente a los formatos deseados (por ejemplo: PDF, ePub, HTML para publicarlo en una web, etc.)
+
+Si quisieras escribir un libro como este desde R, lo puedes hacer instalándote el paquete __bookdown__ [@R-bookdown]:
+
+```{r eval=FALSE, echo=FALSE}
+devtools::install_github("rstudio/bookdown")
+```
+
+
+## Indice de contenidos
+
+El libro se estructura en los siguientes capítulos (si estás leyendo la versión web del libro a la izquierda de la pantalla verás una barra de navegación que puedes usar para para avanzar en los contenidos):
+
+
+- Capítulo \@ref(prefacio): __Prefacio__
+
+- Capítulo \@ref(intro): __Introducción a R__
+
+- Capítulo \@ref(r-para-explorar): __R para explorar__
+
+- Capítulo \@ref(r-para-predecir): __R para predecir__
+
+- Capítulo \@ref(r-para-visualizar): __R para visualizar__
+
+- Capítulo \@ref(r-que-r): __R que R__
+
+
+
+

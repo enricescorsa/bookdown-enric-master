@@ -1,0 +1,130 @@
+# R para Predecir
+
+<br>
+
+> "The problem with experts is that they don't know what they don't know...."
+>
+> --- Nassim Taleb
+
+<br>
+<br>
+
+Con R es también sencillo aplicar modelos de regresión y correlación a nuestros datos, modelos estadísticos predictivos, etc.
+
+##Correlación
+
+No hemos comentado todavía que en el repositorio de R existen varios datasets de ejemplo con los que podemos trabajar y que podemos invocar con sólo llamarlos por su nombre. Uno de ellos es _mtcars_. Se trata de una base de datos de modelos de coches y sus distintas prestaciones o características técnicas expresadas como variables.
+
+Echémosle un vistazo:
+
+```{r chunk-head}
+head(mtcars)
+```
+
+Veamos,por ejemplo, con la ayuda de la función __cor()__ si existen correlaciones entre las variables _mpg_ (miles per galon), _cyl_ (cilindrada), etc.:
+```{r chunk-corr}
+# ponemos las variables mpg, cyl y disp como filas de una matriz:
+x <- mtcars[1:3] 
+# y hp, drat y wt como columnas de la matriz:
+y <- mtcars[4:6]
+#la funcion cor() nos da la correlacion en cada caso:
+cor(x, y)
+```
+
+Valores cercanos a 1 indican correlación positiva, cercanos a -1 correlación negativa y cercanos a 0 poca correlación.
+
+##Regresión
+
+Usamos regresión cuando tenemos un atributo `X` y queremos predecir una Respuesta o Variable de Salida `Y`, por ejemplo para saber cuanto mide alguien en función de cuanto pesa.
+
+
+###Regresión lineal
+
+Si tenemos sólo una variable o atributo hablamos de Regresión Linear Simple. 
+Cuando tenemos múltiples  atributos (ej. x1, x2, x3,..) sería Regresión Linear Múltiple.
+
+Se aplica la fórmula de la ecuación lineal: `y = a + b * x` y se trata de determinar los coeficientes `a` (determina dónde la línea intersecta con el eje Y) y `b` (pendiente de la línea). 
+
+Veamos este caso sencillo y tratemos de trazar la línea de regresión en base a alturas y pesos de una población de 10 personas:
+
+```{r chunk-regli}
+altura <- c(156, 155, 142, 177, 139, 156, 171, 169, 150, 175)
+peso <- c(83, 50, 53, 111, 45, 71, 75, 73, 60, 76)
+plot(peso, altura)
+plot(peso, altura, pch = 16, cex = 1.3, col = "orange", 
+     main = "Altura vs Peso", 
+     xlab = "Peso (kg)", 
+     ylab = "Altura (cm)")
+#modelo lineal
+lm(altura ~ peso) 
+#vemos que el intercept es 120.5135 y el pendiente 0.5522. 
+#Entonces finalmente trazamos la linea que mejor se ajusta (linea de regresión) 
+#en nuestro plot:
+abline(120.5135, 0.5522)
+#o sino también podemos visualizar la linea de regresion con:
+abline(lm(altura ~ peso))
+```
+
+
+###Regresión logística
+
+Otro tipo de regresión que nos es útil a menudo es la regresión logística. Se trata de un modelo de regresión dónde la variable dependiente es categórica. 
+Por ejemplo: la probabilidad de Aprobar (SI o NO) un examen en función del número de horas estudiadas, o la determinación de si un mail es _SPAM_ o no en función de varios atributos o variables independientes (p.ej. el número de palabras, si contiene imágenes, links, etc. )
+
+El modelo estima, por tanto, la probabilidad de una respuesta binaria (categórica) en base a uno o más predictores (o variables independientes) mediante una función logística.
+
+Probemos con un ejemplo tonto en base a nuestros datos: probabilidad de ser chica en función del número de cromos que tiene una persona.
+
+```{r chunk-rlogis}
+library(tidyverse)
+library(ggplot2)
+misdatos<-misdatos%>%
+#creo la variable Es_Chica
+  mutate(Es_chica=as.numeric(Sexo=="f"))
+#uso geom_smooth para definir la curva de tendencia de la regresión logística
+regresion_logistica<-ggplot(data= misdatos,aes(x= Cromos,y= Es_chica)) +
+  geom_smooth(method="glm",method.args=list(family="binomial")) +
+  ylab("¿Es chica? 0(No) -1(Sí)")
+regresion_logistica
+
+```
+
+
+##Proyectar (Forecast)
+
+Veamos ahora otro caso; supongamos que hemos ido anotando desde el año 2000 en un archivo las ventas de cada mes de nuestro negocio. Estaria bien poder predecir cuáles van a ser las de los proximos meses.
+
+Podemos usar el paquete __Forecast__ [@R-forecast] desarrollado y mantenido por Rob Hyndman, para aplicar modelos proyectivos conocidos (tales como el modelo ARIMA)
+
+Lo haríamos del siguiente modo:
+
+Leemos los datos a partir de nuestro archivo ventas.csv.
+
+`df <- read.csv("C:/.../ventas.csv")`
+
+Transformamos los datos en un objeto temporal (_time series object_) del tipo `ts` (indicamos que los datos son mensuales y que el periodo de inicio es Enero del 2000).
+
+Mostramos los datos:
+```{r chunk-dataforecast}
+df <- read.csv("_bookdown_files/ventas.csv")
+series <- ts(df, frequency = 12, start = c(2000,1))
+print(series)
+```
+
+Ploteamos la serie temporal. Nos aseguramos que el eje `y` empieza por cero.
+```{r chunk-plotseries}
+plot(series, ylim=c(0, 35000))
+```
+
+Generemos ahora una prevision para los próximos 20 periodos en base al modelo ARIMA. Lo hacemos en dos pasos:
+1) creamos un modelo usando la función `auto.arima` del paquete `forecast`
+2) generamos una proyección en base al modelo usando la función `forecast`
+
+Representamos gráficamente la previsión:
+
+```{r chunk-forecast, message=FALSE}
+require(forecast)
+model_arima <- auto.arima(series)
+fcast_arima <- forecast(model_arima, h = 20)
+plot(fcast_arima)
+```

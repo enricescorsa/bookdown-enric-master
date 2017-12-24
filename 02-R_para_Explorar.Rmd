@@ -1,0 +1,227 @@
+# R para Explorar
+
+
+<br>
+
+> "Aquí tengo todos los datos que demuestran incuestionablemente que los datos no demuestran NADA...."
+>
+> --- Miguel Brieva
+
+<br>
+<br>
+
+La exploración de datos implica normalmente poder leer datos de fuentes y formatos diversos y acomodarlos según nos convenga. Estas tareas son, de hecho, las que suelen tomar más tiempo, de todo el proceso de análisis y asimilación de la información.
+
+
+##Leer datos
+
+Nos puede interesar leer y analizar datos de varios lados: de un archivo, una página web, una base de datos, etc.
+
+###Leer datos de un archivo
+
+Si queremos leer los datos de una tabla, por ejemplo, un archivo en formato `.csv` (valores delimitados por comas) que tenemos en nuestra carpeta o directorio, lo podemos hacer mediante el paquete __readr__ [@R-readr]
+
+
+```{r chunk-readr, message=FALSE}
+library(readr)
+misdatos<- read_csv("_bookdown_files/cromos.csv")
+misdatos
+```
+
+Nota: ojo al detalle del formato usado para indicar la ubicación del archivo: las barras son del tipo `/` (si usamos `\` no nos funcionará)
+
+De modo similar, leería los datos de un archivo `.txt` (datos no tabulares) usando la variante de la función de lectura `read_file`en mi expresión: `misdatos <- read_file("path/miarchivo.txt")`
+
+
+Habrá que fijarse bien y cuando sea necesario usar las distintas variantes de la función de lectura de __readr__ según cómo estén delimitados los datos en el archivo que queremos leer: sea por comas, por punto y coma, por separador (tab) o por cualquier otro delimitador.
+
+Mírate esta chuleta de Rstudio para entender todas las opciones de importación de datos: https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf 
+
+En caso de que no estén por defecto en la función de lectura que usamos estas opciones las deberemos especificar nosotros en los argumentos de la función; así como si tienen título o no, si queremos considerar los datos faltantes o no, etc. Siempre nos aseguraremos de que los datos se nos importan en el formato correcto.
+
+
+
+
+###Leer datos contenidos en un excel
+
+Si me interesan algunos datos que tengo en un excel; los puedo seleccionar, copiar (en el portapapeles) y luego voy a R y escribo: `misdatos <-read.delim ("clipboard")`.
+
+Ahora cuando lo que quiero es leer archivos enteros de excel desde R, usaré -de modo similar a cómo hemos visto para leer archivos csv- paquetes como __xlsx__ [@R-xlsx] o __readxl__ [@R-readxl] (paquete que es parte del conjunto integrado de paquetes __Tidyverse__) y sus respectivas funciones para leer los datos de las tablas de un excel: `read.xlsx ()` y `read_excel()`.
+
+
+
+###Leer datos de una página web
+
+Pongamos que me interesa una tabla en csv disponible en una página web. La puedo importar también con `misdatos <- read.csv("http://www..../archivo.csv")`
+
+Otro caso seria recuperar una parte de contenido que se encuentra en formato HTML en una página web a un formato estructurado que podamos analizar. La técnica asociada a ese fin se conoce como `webscrapping`. En R hay un paquete específico para hacer webscraping llamado __rvest__ [@R-rvest]
+
+Por ejemplo, imaginemos que soy un fan del waterpolo y quiero recuperar los resultados de la  competición de la categoría de másteres que se encuentran en la página de la federación catalana de natación:
+```{r chunk-webscrap, message=FALSE, warning=FALSE}
+#cargo el paquete rvest
+library(rvest)
+#asigno un nombre a la URL de la página que me interesa
+clasificacion_waterpolo <-
+  read_html("http://aquatics.cat/competicio/informacioCompeticio/2016/9/49/0")
+
+#recupero la segunda tabla que aparece en esta página indicando ".[[2]]" en la expresión:
+clasificacion_waterpolo %>%
+  html_nodes("table") %>%
+  .[[2]] %>%
+  html_table()
+```
+
+Ya tengo los resultados.
+
+##Acomodar datos
+
+Muy a menudo, sin embargo, los datos se nos presentan de forma bruta o imperfecta (formatos raros, valores que faltan, duplicidades, etc) o simplemente no están de la forma que queremos. Por ello es importante acomodarlos de un modo que sea adecuado o conveniente para su análisis.
+
+
+###Funciones base en R
+
+En R es posible usar funciones como `apply, lapply, sapply, tapply, etc.` para realizar operaciones comunes en el trabajo con matrices y tablas.
+
+ - __apply__, permite aplicar funciones a filas o columnas de una matriz
+
+Por ejemplo, aplicaríamos la funcion suma a las columnas de la matriz `df` con la expresión:
+`apply (df, 2, sum)` (aquí `1` se usa para indicar fila y `2` para indicar columna)
+
+ - __lapply__, extrae una parte de una matriz o tabla como una lista
+
+Por ejemplo, para extraer la primera fila de la tabla `df` usariamos:
+`lapply (df,"[", 1, )` y para extraer la segunda columna de la tabla `df`:
+`lapply (df,"[", , 2)`
+
+ - __tapply__, permite aplicar funciones a una variable, desglosada en base a otra.
+ 
+Por ejemplo, en el caso de nuestros datos, para calcular la mediana del número de cromos por sexo:
+```{r chunk-tapply, message=FALSE, warning=FALSE}
+tapply(misdatos$Cromos, misdatos$Sexo, mean)
+```
+Las chicas tienen de media más cromos que los chicos.
+
+Otras funciones disponibles en R base (sin necesidad de cargar paquetes adicionales) útiles para ordenar, filtrar o hacer transformaciones a nuestros datos son `sort()`, `subset()` o `transform()`.
+
+Prueba a buscar ayuda sobre estas funciones (por ejemplo escribiendo `?sort`).
+
+
+###Paquete dplyr 
+
+Más recientemente, en el marco de herramientas integradas que facilitan acomodar datos ([tidyverse](http://tidyverse.org/)), podemos usar varias funciones incluidas en el paquete __dplyr__ [@R-dplyr]. Las más importantes son:
+
+ - __filter()__ que permite filtrar observaciones por sus valores. 
+
+ - __arrange()__ para reordenar filas por variables
+
+ - __select()__ para tomar variables por sus nombres.
+
+ - __mutate()__ para canviar variables o crear nuevas variables con funciones de variables existentes. 
+ 
+ - __summarise()__ para sumarizar muchos valores en uno solo.
+ 
+
+Por ejemplo, para eliminar una columna de una tabla puedo usar `select()` y el operador negativo `-`:
+
+`df %>% select(-variable_inutil)` (siendo `variable_inutil` el nombre de la columna de `df` que no quiero)
+ 
+Para eliminar filas duplicadas puedo usar la función `distinct()`:
+
+`df_limpia <- df %>% distinct()` elimina filas duplicadas de `df` y asigna una nueva tabla (`df_limpia`) sin ellas (`distinct` és útil por tanto para hacer recuentos de variables descartando las que aparecen más de una vez)
+
+ 
+Con `filter()` (función similar a `subset` en R base) puedo por ejemplo retener determinadas observaciones de una columna (p.ej. un determinado rango de la variable `Edad`):
+ 
+ `df %>%
+ filter(Edad > 18)`
+ 
+Con `arrange()` (similar a `sort` en R base) ordenar datos en orden ascendente: `arrange(Edad)` o descendente : `arrange(desc(Edad))`
+
+
+Con `mutate()` (similar a `transform` en R base) puedo, por ejemplo, crear una nueva variable en base a otras: 
+
+`mutate(nueva_columna = col1 + col2)`
+
+Nota: vemos que una forma de expresar varias funciones a la vez de un modo eficiente y entendedor es usando el operador  `%>%` (conocido como `pipe` y disponible con los paquetes __magritte__ y __tidyverse__). Consiste básicamente en que, en vez de expresar una función que opere sobre unos datos como `f(datos)`, lo puedo hacer como `datos %>% f` y ello me permite ir concatenando varias funciones que quiera aplicar sobre esos mismos datos y que sea fácil de entender.
+
+Veámoslo en un ejemplo:
+
+```{r chunk-magritteex, message=FALSE, warning=FALSE}
+library(dplyr)
+misdatos %>%
+  #hago filtro de los que no son hijos únicos
+  filter(numerodehermanos > 1) %>% 
+  #creo nueva variable resultante de dividir Cromos por Edad
+  mutate(RatioCromosEdad = Cromos/Edad) %>% 
+  #creo nueva variable (Edaden5) sumándole 5 años a la variable Edad
+  transform(Edaden5 = Edad+5) %>% 
+  #ordeno por numero de cromos en orden descendente
+  arrange(desc(Cromos))%>% 
+  #mostrar las primeras 5 filas de la tabla resultante
+  head(5) 
+```
+
+
+
+###Limpiar textos
+
+Para limpiar textos a menudo nos interesa reemplazar carácteres de nuestros datos brutos por otros más sencillos. Para ello suelen ser muy útiles funciones como __gsub__. La expresamos como:
+
+`gsub(pattern, replacement, x, ignore.case = TRUE)`
+
+Dónde:
+
+ - `pattern`: carácteres a cambiar
+
+ - `replacement`: carácteres para remplazar
+
+ - `x`: nuestros datos
+
+ - `ignore.case`: ponemos TRUE cuando queremos ignorar si el patrón es mayúsculas o minúsculas
+
+Por ejemplo:
+
+```{r chunk-gsub}
+x <- "danger"
+gsub("d","",x)
+```
+
+La función __substr__ la podemos usar, por ejemplo, para eliminar n carácteres de un elemento. Si sólo queremos los carácteres del primero al onceavo:
+
+```{r chunk-substrrang}
+brutos <- "loquequieroloquenoquiero"
+limpios <- substr(brutos, 1, 11)
+print(limpios)
+```
+
+Esta misma expresión la podemos opcionalmente formar junto con `nchar` para indicar el número de carácteres que no queremos (empezando en este caso por atrás):
+
+```{r chunk-substrnchar}
+brutos <- "loquequieroloquenoquiero"
+limpios <- substr(brutos, 1, nchar (brutos)-13)
+print(limpios)
+```
+
+Otro paquete __stringr__ [@R-stringr] es también útil para manipular textos; de modo similar me permite tomar sólo los últimos carácteres de algo:
+
+```{r chunk-stringr-}
+library (stringr)
+brutos <- "smart"
+limpios <- str_sub(brutos,-3)
+print(limpios)
+```
+
+O extrer las palabras unidas por guiones bajos en una frase
+```{r chunk-stringr_}
+frase <- "el_último_de_la_fila"
+ str_split(frase,"_")
+```
+
+O considerar los NA que aparecen a menudo en una tabla o un vector de textos como datos faltantes y reemplazarlos por carácteres (entrecomillados) sin eliminarlos.
+```{r chunk-stringrNA}
+vector <- c("una_cosa",NA,"otra_cosa")
+str_replace_na(vector)
+```
+
+
+Nota: Quizás lo estés pensando; pues sí, en R una misma cosa puede hacerse de muchos modos distintos y usando paquetes distintos. Hay algunas funciones comunes y paquetes muy usados -las que estamos tratando de mostrar aquí- pero existen innumerables funciones para resolver problemas similares y uno siempre encontrará un paquete que haga la misma cosa pero de otro modo.

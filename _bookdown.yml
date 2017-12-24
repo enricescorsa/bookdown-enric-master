@@ -1,0 +1,5 @@
+book_filename: "bookdown-enric"
+language:
+  ui:
+    chapter_name: "Capitulo "
+output_dir: docs

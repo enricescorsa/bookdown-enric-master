@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>R que R</title>
+  <meta name="description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="R que R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="enric_happy.jpg" />
+  <meta property="og:description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa" />
+  <meta name="github-repo" content="enricescorsa/bookdown-enric" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R que R" />
+  
+  <meta name="twitter:description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa" />
+  <meta name="twitter:image" content="enric_happy.jpg" />
+
+<meta name="author" content="Enric Escorsa O’Callaghan">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="r-para-visualizar.html">
+<link rel="next" href="sumario.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R que R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefacio</a></li>
+<li class="chapter" data-level="2" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>2</b> Placeholder</a></li>
+<li class="chapter" data-level="3" data-path="r-para-explorar.html"><a href="r-para-explorar.html"><i class="fa fa-check"></i><b>3</b> R para explorar</a></li>
+<li class="chapter" data-level="4" data-path="r-para-predecir.html"><a href="r-para-predecir.html"><i class="fa fa-check"></i><b>4</b> R para predecir</a></li>
+<li class="chapter" data-level="5" data-path="r-para-visualizar.html"><a href="r-para-visualizar.html"><i class="fa fa-check"></i><b>5</b> R para Visualizar</a></li>
+<li class="chapter" data-level="6" data-path="r-para-aprender.html"><a href="r-para-aprender.html"><i class="fa fa-check"></i><b>6</b> R para aprender</a><ul>
+<li class="chapter" data-level="6.1" data-path="r-para-aprender.html"><a href="r-para-aprender.html#aprendizaje_supervisado"><i class="fa fa-check"></i><b>6.1</b> Aprendizaje_Supervisado</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="r-para-aprender.html"><a href="r-para-aprender.html#regresion"><i class="fa fa-check"></i><b>6.1.1</b> Regresión</a></li>
+<li class="chapter" data-level="6.1.2" data-path="r-para-aprender.html"><a href="r-para-aprender.html#arboles-de-decision"><i class="fa fa-check"></i><b>6.1.2</b> Arboles de decisión</a></li>
+<li class="chapter" data-level="6.1.3" data-path="r-para-aprender.html"><a href="r-para-aprender.html#svm"><i class="fa fa-check"></i><b>6.1.3</b> SVM</a></li>
+<li class="chapter" data-level="6.1.4" data-path="r-para-aprender.html"><a href="r-para-aprender.html#naive-bayes"><i class="fa fa-check"></i><b>6.1.4</b> Naïve Bayes</a></li>
+<li class="chapter" data-level="6.1.5" data-path="r-para-aprender.html"><a href="r-para-aprender.html#random-forest"><i class="fa fa-check"></i><b>6.1.5</b> Random Forest</a></li>
+<li class="chapter" data-level="6.1.6" data-path="r-para-aprender.html"><a href="r-para-aprender.html#analisis-de-componentes-principales-pca"><i class="fa fa-check"></i><b>6.1.6</b> Análisis de Componentes Principales (PCA)</a></li>
+<li class="chapter" data-level="6.1.7" data-path="r-para-aprender.html"><a href="r-para-aprender.html#clasificacion-jerarquica-ascendente-ahc"><i class="fa fa-check"></i><b>6.1.7</b> Clasificación Jerárquica Ascendente (AHC)</a></li>
+<li class="chapter" data-level="6.1.8" data-path="r-para-aprender.html"><a href="r-para-aprender.html#pls"><i class="fa fa-check"></i><b>6.1.8</b> PLS</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="r-para-aprender.html"><a href="r-para-aprender.html#aprendizaje_reforzado"><i class="fa fa-check"></i><b>6.2</b> Aprendizaje_Reforzado</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="r-para-aprender.html"><a href="r-para-aprender.html#procesos-de-decision-de-markov"><i class="fa fa-check"></i><b>6.2.1</b> Procesos de Decisión de Markov</a></li>
+<li class="chapter" data-level="6.2.2" data-path="r-para-aprender.html"><a href="r-para-aprender.html#redes-neuronales-y-deep-learning"><i class="fa fa-check"></i><b>6.2.2</b> Redes Neuronales y Deep Learning</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sumario.html"><a href="sumario.html"><i class="fa fa-check"></i><b>7</b> Sumario</a></li>
+<li class="chapter" data-level="8" data-path="placeholder-1.html"><a href="placeholder-1.html"><i class="fa fa-check"></i><b>8</b> Placeholder</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R que R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-para-aprender" class="section level1">
+<h1><span class="header-section-number">Capitulo 6</span> R para aprender</h1>
+<p>Con R podemos modelar algoritmos de Aprendizaje Automático.</p>
+<p>Antes de empezar es importante tener clara la siguiente terminología estadística básica (muy general):</p>
+<ul>
+<li><p><strong>Observación</strong> (normalmente Filas en una tabla) = Observation = Sample = Example = Instance = Record = Muestra</p></li>
+<li><p><strong>Característica</strong> (normalmente Columnas en una tabla) = Feature = Predictor = Attribute = Input = Regressor = Independent Variable</p></li>
+<li><p><strong>Respuesta</strong> (cada valor que queremos predecir) = Response = Target = Outcome = Output = Label = Dependent Variable</p></li>
+</ul>
+<p>Aprendizaje supervisado, Aprendizaje no supervisado y Aprendizaje reforzado</p>
+<div id="aprendizaje_supervisado" class="section level2">
+<h2><span class="header-section-number">6.1</span> Aprendizaje_Supervisado</h2>
+<p>Consiste en una Respuesta (o variable dependiente) que puede predecirse a partir de una serie de Atributos (o variables independientes). Usándolos generamos una función que mapea inputs a outputs deseados.El proceso de entrenamiento continua hasta que el modelo alcanza el nivel deseado de precisión (accuracy) sobre los datos de entrenamiento. p.e.) Regression, Decision Tree, Random Forest, KNN, Logistic Regression</p>
+<div id="regresion" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Regresión</h3>
+<p>Regresión lineal y regresión logística</p>
+<div id="regresion-lineal" class="section level4">
+<h4><span class="header-section-number">6.1.1.1</span> Regresión lineal</h4>
+<p>Cuando tenemos un atributo X y queremos predecir una Respuesta o Variable de Salida Y p.e.) saber cuanto mide alguien en función de cuanto pesa Si tenemos sólo una variable o atributo hablamos de Regresión Linear Simple Cuando tenemos múltiples atributos (ej. x1, x2, x3,..) sería Regresión Linear Múltiple</p>
+<p>Se aplica la fórmula de la ecuación lineal: y = a + b * x Se trata de determinar los coeficientes a (determina dónde la línea intersecta con el eje Y) y b (pendiente de la línea)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">156</span>, <span class="dv">155</span>, <span class="dv">142</span>, <span class="dv">177</span>, <span class="dv">139</span>, <span class="dv">156</span>, <span class="dv">171</span>, <span class="dv">169</span>, <span class="dv">150</span>, <span class="dv">175</span>)
+peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">50</span>, <span class="dv">53</span>, <span class="dv">111</span>, <span class="dv">45</span>, <span class="dv">71</span>, <span class="dv">75</span>, <span class="dv">73</span>, <span class="dv">60</span>, <span class="dv">76</span>)
+<span class="kw">plot</span>(peso, altura)</code></pre></div>
+<p><img src="bookdown-enric_files/figure-html/chunk-regli-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(peso, altura, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="fl">1.3</span>, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Altura vs Peso&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Peso (kg)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Altura (cm)&quot;</span>)
+<span class="co">#modelo lineal</span>
+<span class="kw">lm</span>(altura ~<span class="st"> </span>peso) </code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = altura ~ peso)
+## 
+## Coefficients:
+## (Intercept)         peso  
+##    120.5135       0.5522</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#vemos que el intercept es 120.5135 y el pendiente 0.5522. Entonces finalmente trazamos la linea que mejor se ajusta (linea de regresión) en nuestro plot</span>
+  
+<span class="kw">abline</span>(<span class="fl">120.5135</span>, <span class="fl">0.5522</span>)
+
+<span class="co">#o sino también podemos visualizar la linea de regresion con:</span>
+  
+<span class="kw">abline</span>(<span class="kw">lm</span>(altura ~<span class="st"> </span>peso))</code></pre></div>
+<p><img src="bookdown-enric_files/figure-html/chunk-regli-2.png" width="672" /></p>
+</div>
+<div id="regresion-logistica" class="section level4">
+<h4><span class="header-section-number">6.1.1.2</span> Regresión logística</h4>
+<p>Modelo de regresión dónde la variable dependiente es categórica. p.e.) probabilidad de Aprobar (SI o NO) un examen en función del número de horas estudiadas</p>
+<p>El Modelo estima la probabilidad de una respuesta binaria (categórica) en base a uno o más predictores (o variables independientes) mediante una función logística.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#x &lt;- cbind(x_train,y_train)</span>
+
+<span class="co">#Entrenamos el modelo usando los sets de entrenamiento y comprobamos score</span>
+<span class="co">#logistic &lt;- glm(y_train ~ ., data = x,family=&#39;binomial&#39;)</span>
+<span class="co">#summary(logistic)</span>
+
+<span class="co">#Predecimos Output</span>
+<span class="co">#predicted= predict(logistic,x_test)</span></code></pre></div>
+</div>
+</div>
+<div id="arboles-de-decision" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Arboles de decisión</h3>
+<p>Método usado tanto para classificación como para regresión. El objetivo es crear un modelo que prediga una variable Respuesta por medio de aprender reglas simples de decisión inferidas a partir de las características de los datos.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(rpart)</span>
+<span class="co">#x &lt;- cbind(x_train,y_train)</span>
+
+<span class="co">#Hacemos crecer el arbol</span>
+<span class="co">#fit &lt;- rpart(y_train ~ ., data = x,method=&quot;class&quot;)</span>
+<span class="co">#summary(fit)</span>
+
+<span class="co">#Predecimos Output </span>
+<span class="co">#predicted= predict(fit,x_test)</span></code></pre></div>
+</div>
+<div id="svm" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> SVM</h3>
+<p>Método de clasificación. Representamos cada dato como un punto en un espacio n-dimensional (dónde n es el nombre de atributos que tenemos) con el valor de cada atributo siendo el valor de una coordenada particular.</p>
+<p>P.e.) si sólo tuvieramos dos características: Altura y Largo de Pelo de un individuo, representariamos estas 2 variables en un espacio de 2 dimensiones dónde cada punto tuviera 2 coordenadas (estas coordenadas se conocen como Support Vectors)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(e1071)</span>
+<span class="co">#x &lt;- cbind(x_train,y_train)</span>
+
+<span class="co">#Modelamos</span>
+<span class="co">#fit &lt;-svm(y_train ~ ., data = x)</span>
+<span class="co">#summary(fit)</span>
+
+<span class="co">#Predecir output</span>
+<span class="co">#predicted= predict(fit,x_test)</span></code></pre></div>
+</div>
+<div id="naive-bayes" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Naïve Bayes</h3>
+<p>Técnica de Clasificación basada en el Teorema de Bayes que asume independencia entre los predictores. Un clasificador de Naive Bayes asume que la presencia de una característica particular en una clase no está relacionada con la presencia de cualquier otra característica.</p>
+<p>p.e.) un fruto puede considerarse que sea una Manzana si es Roja, redonda, y de más de 3 cm de diametro. Aunque estas características dependieran entre ellas o de la existencia de otras características, el clasificador de naive Bayes considera que todas estas propiedades contribuyen cada una independientemente a la probabilidad de que esta fruta sea una manzana.</p>
+<p>El modelo Naive Bayesiano es fácil de construir y particularmente útil para grandes datasets.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#library(e1071)</span>
+<span class="co">#x &lt;- cbind(x_train,y_train)</span>
+
+<span class="co">#Modelamos</span>
+<span class="co">#fit &lt;-naiveBayes(y_train ~ ., data = x)</span>
+<span class="co">#summary(fit)</span>
+
+<span class="co">#Predecimos Output </span>
+<span class="co">#predicted= predict(fit,x_test)</span></code></pre></div>
+</div>
+<div id="random-forest" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> Random Forest</h3>
+<p>Random Forest es un término usado para referirse a un conjunto de Arboles de Decisión (al que llamamos “Forest” o “Bosque”). Para clasificar un objeto en base a sus atributos, cada árbol da una clasificación y decimos que el árbol “vota” por esa clase. El bosque elije la clasificación con más votos (de todos lor árboles del bosque).</p>
+<p>Cada árbol se planta y se hace crecer del siguiente modo: Si el número de casos en el set de entrenamiento es N, entonces una muestra de N casos se toma aleatoriamente pero con replacement (un caso puede ser seleccionado más de una vez en la muestra). Esta muestra será el set de entrenamiento par hacer crecer el árbol. Si hay M variables de entrada, un número m&lt;<M es especificado tal que a cada nodo, m variables son seleccionadas aleatoriamente de M y el mejor corte de estos m es usado para cortar el nodo. El valor de m se mantiene constante durante el crecimiento del bosque.
+Cada árbol se hace crecer lo más extensamente possible (no se poda).
+
+Random Forest se incluyen dentro de los métodos conocidos como “Ensemble Methods”
+
+
+```r
+#library(randomForest)
+#x <- cbind(x_train,y_train)
+
+#Modelamos
+#fit <- randomForest(Species ~ ., x,ntree=500)
+#summary(fit)
+
+#Predecimos output
+#predicted= predict(fit,x_test)
+```
+
+
+###Nearest Neightbours (kNN)
+
+Puede usarse tanto para problemas de Clasificación como para Regresión (aunque es más usado en Clasificación). 
+Se trata de un algoritmo simple que guarda todos los casos de variables y clasifica nuevos casos  según la mayoría de los votos de sus k vecinos. El caso asignado a la clase és el más común entre sus K vecinos más cercanos medido por una función de distancia, que puede ser Euclideana, de Manhattan, de Minkowski o de Hamming. 
+La última (Hamming) se usa para variables categoricas. 
+Si K = 1, el caso es asignado a la clase de su vecino más cercano. 
+
+
+```r
+#library(knn)
+#x <- cbind(x_train,y_train)
+
+#Modelado
+#fit <-knn(y_train ~ ., data = x,k=5)
+#summary(fit)
+
+#Predecimos Output 
+#predicted= predict(fit,x_test)
+```
+
+
+
+##Aprendizaje_no_supervisado
+
+Aquí no tenemos una Respuesta o variable a predecir o estimar. Se usa para clusterizar una población en diferentes grupos. p.ej. para segmentar grupos de clientes.
+p.e.) Apriori algorithm, K-means, Clusterización jerárquica
+
+
+###A priori alogithm
+
+Algoritmo basado en el Principio de Apriori (si un set de ítems es frecuente, entonces todos sus subsets son frecuentes y lo mismo para los no frecuentes).
+P.e. (clásico) Descubrimiento de asociaciones en el comportamiento de usuarios: Compra de Pañales y Cerveza los Jueves en el Supermercado
+La figura representa todas las combinaciones posibles de 4 productos(0,1,2 y 3) que pueden ser comprados 
+
+
+###k-Means
+
+Método de Clusterización. Proceso simple para clasificar un set de datos en un cierto número de clústeres (se asumen k clústeres). Los puntos de datos dentro de un clúster son homogéneos y heterogénos. Mirando estos datos se pueden  conformar grupos.
+Su aplicación se basa en maximizar las diferencias entre las Medianas de los Clusteres
+
+
+```r
+#library(cluster)
+#fit <- kmeans(X, 3) # 5 cluster solution
+```
+
+Example k-means clustering with R (http://www.rdatamining.com/examples/kmeans-clustering)
+
+
+###Clusterización jerárquica
+
+Los algoritmos de clasificación jerárquica construyen clusteres anidados uniéndolos o dividiendolos sucesivamente. Esta jerarquía de clusteres se representa como un árbol (or dendrograma). La raíz del árbol es el único cluster que agrupa todas las muestras mientras que las hojas son los clústeres con sólo una muestra.
+
+Uno de los beneficios de la clusterización jerárquica es que no necesitas saber de entrada el numero de clusteres k en tus datos (a diferencia de K-means dónde lo tenias que indicar)
+
+(http://www.r-bloggers.com/hierarchical-clustering-in-r-2/)
+
+
+```r
+clusters <- hclust(dist(iris[, 3:4]))
+plot(clusters)
+```
+
+<img src="bookdown-enric_files/figure-html/chunk-clusthie-1.png" width="672" /></p>
+</div>
+<div id="analisis-de-componentes-principales-pca" class="section level3">
+<h3><span class="header-section-number">6.1.6</span> Análisis de Componentes Principales (PCA)</h3>
+<p>Cuando tenemos matrices de datos muy grandes, el PCA nos permite determinar el modelo mejor y más simple que represente esos datos mediante reducir el número de variables independientes. Ello se logra calculando valores y vectores de la matriz (y descartando las variables/características de menor variancia). A nivel práctico el PCA usa una proyección ortogonal de variables altamente correlacionadas de grupos de valores de variables linealmente no correlacionadas a los que llamamos Componentes Principales</p>
+<p>Package <strong>FactormineR</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#read data from external site after copied into the clipboard</span>
+<span class="co">#data &lt;- read.csv(&quot;clipboard&quot;)</span>
+<span class="co">#ratings&lt;-data[,3:14]</span>
+
+<span class="co">#runs finite mixture model</span>
+<span class="co">#library(mclust)</span>
+<span class="co">#fmm&lt;-Mclust(ratings)</span>
+<span class="co">#fmm</span>
+<span class="co">#table(fmm$classification)</span>
+<span class="co">#fmm$parameters$mean</span>
+
+<span class="co">#compares with k-means solution</span>
+<span class="co">#kcl&lt;-kmeans(ratings, 4, nstart=25)</span>
+<span class="co">#table(fmm$classification, kcl$cluster)</span>
+
+<span class="co">#creates biplots</span>
+<span class="co">#library(FactoMineR)</span>
+<span class="co">#pca&lt;-PCA(ratings)</span>
+<span class="co">#plot(pca, choix=c(&quot;ind&quot;), label=&quot;none&quot;, col.ind=fmm$classification) </span></code></pre></div>
+</div>
+<div id="clasificacion-jerarquica-ascendente-ahc" class="section level3">
+<h3><span class="header-section-number">6.1.7</span> Clasificación Jerárquica Ascendente (AHC)</h3>
+<p>Podemos usar AHC para clusterizar objetos en grupos con sentido. La combinación de PCA y AHC nos permite representar gráficamente proximidades o distancias entre variables formando clústeres. (El árbol de clasificación generado por AHC permite establecer líneas de corte a distintos niveles y así determinar clases más o menos significativas)</p>
+</div>
+<div id="pls" class="section level3">
+<h3><span class="header-section-number">6.1.8</span> PLS</h3>
+<p>Partial least squares regression (PLS regression) es un método estadístico que tiene alguna relación con el PCA; Aquí en vez de encontrar hiperplanos de variancia mínima entre la respuesta y las variables independentes , se encuentra un modelo de regresión lineal mediante la proyección de las variables predecidas y las variables observables en un nuevo espacio.</p>
+<p>Usar PLS para encontrar la mejor proyeccion que explique un factor (y)</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(pls)</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;pls&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     loadings</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Usamos el dataset de muestra de R mtcars</span>
+<span class="kw">data</span>(mtcars)
+data&lt;-mtcars
+
+<span class="co">#Escalar y centrar los datos</span>
+scaled.data&lt;-<span class="kw">scale</span>(data,<span class="dt">center=</span>T,<span class="dt">scale=</span>T)
+
+<span class="co">#De objeto a modelo</span>
+fct&lt;-<span class="kw">as.factor</span>(data$gear) <span class="co">#algun factor para usar para plotear grupos</span>
+y&lt;-<span class="kw">as.numeric</span>(<span class="kw">as.character</span>(<span class="kw">unlist</span>(fct))) <span class="co"># convertir  numerico y</span>
+<span class="kw">paste</span>(<span class="kw">sum</span>(<span class="kw">is.na</span>(scaled.data)), <span class="st">&quot;datos faltantes&quot;</span>)<span class="co"># nos aseguramos que no hay datos faltantes</span></code></pre></div>
+<pre><code>## [1] &quot;0 datos faltantes&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Hacer PLS</span>
+pls.mod&lt;-<span class="kw">plsr</span>(y~.,<span class="dt">data=</span><span class="kw">as.data.frame</span>(scaled.data),<span class="dt">ncomp=</span><span class="dv">2</span>) <span class="co"># this a pls model of y on all the data (scaled) and only 2 components</span>
+<span class="kw">summary</span>(pls.mod) <span class="co"># sumario</span></code></pre></div>
+<pre><code>## Data:    X dimension: 32 11 
+##  Y dimension: 32 1
+## Fit method: kernelpls
+## Number of components considered: 2
+## TRAINING: % variance explained
+##    1 comps  2 comps
+## X    51.24    83.88
+## y    71.53    89.41</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(pls.mod) <span class="co"># plotear predicciones</span></code></pre></div>
+<p><img src="bookdown-enric_files/figure-html/chunk-pls-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(pls.mod) <span class="co"># resultados del modelado</span></code></pre></div>
+<pre><code>## List of 19
+##  $ coefficients   : num [1:11, 1, 1:2] 0.0741 -0.076 -0.0857 -0.0194 0.1079 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 3
+##   .. ..$ : chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. ..$ : chr &quot;y&quot;
+##   .. ..$ : chr [1:2] &quot;1 comps&quot; &quot;2 comps&quot;
+##  $ scores         : scores [1:32, 1:2] 1.52 1.41 1.91 -1.31 -2.03 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:32] &quot;Mazda RX4&quot; &quot;Mazda RX4 Wag&quot; &quot;Datsun 710&quot; &quot;Hornet 4 Drive&quot; ...
+##   .. ..$ : chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ loadings       : loadings [1:11, 1:2] 0.374 -0.368 -0.395 -0.244 0.401 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. ..$ : chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ loading.weights: loadings [1:11, 1:2] 0.26 -0.266 -0.3 -0.068 0.378 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. ..$ : chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ Yscores        : scores [1:32, 1:2] 1.1 1.1 1.1 -2.41 -2.41 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:32] &quot;Mazda RX4&quot; &quot;Mazda RX4 Wag&quot; &quot;Datsun 710&quot; &quot;Hornet 4 Drive&quot; ...
+##   .. ..$ : chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ Yloadings      : loadings [1, 1:2] 0.285 0.169
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr &quot;y&quot;
+##   .. ..$ : chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ projection     : num [1:11, 1:2] 0.26 -0.266 -0.3 -0.068 0.378 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. ..$ : chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ Xmeans         : num [1:11] 7.11e-17 -1.47e-17 -9.09e-17 1.04e-17 -2.92e-16 ...
+##  $ Ymeans         : num 3.69
+##  $ fitted.values  : num [1:32, 1, 1:2] 4.12 4.09 4.23 3.31 3.11 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 3
+##   .. ..$ : chr [1:32] &quot;Mazda RX4&quot; &quot;Mazda RX4 Wag&quot; &quot;Datsun 710&quot; &quot;Hornet 4 Drive&quot; ...
+##   .. ..$ : chr &quot;y&quot;
+##   .. ..$ : chr [1:2] &quot;1 comps&quot; &quot;2 comps&quot;
+##  $ residuals      : num [1:32, 1, 1:2] -0.1222 -0.0885 -0.2328 -0.3143 -0.1081 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 3
+##   .. ..$ : chr [1:32] &quot;Mazda RX4&quot; &quot;Mazda RX4 Wag&quot; &quot;Datsun 710&quot; &quot;Hornet 4 Drive&quot; ...
+##   .. ..$ : chr &quot;y&quot;
+##   .. ..$ : chr [1:2] &quot;1 comps&quot; &quot;2 comps&quot;
+##  $ Xvar           : Named num [1:2] 175 111
+##   ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Comp 1&quot; &quot;Comp 2&quot;
+##  $ Xtotvar        : num 341
+##  $ fit.time       : Named num 0.03
+##   ..- attr(*, &quot;names&quot;)= chr &quot;elapsed&quot;
+##  $ ncomp          : num 2
+##  $ method         : chr &quot;kernelpls&quot;
+##  $ call           : language plsr(formula = y ~ ., ncomp = 2, data = as.data.frame(scaled.data))
+##  $ terms          :Classes &#39;terms&#39;, &#39;formula&#39;  language y ~ mpg + cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb
+##   .. ..- attr(*, &quot;variables&quot;)= language list(y, mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)
+##   .. ..- attr(*, &quot;factors&quot;)= int [1:12, 1:11] 0 1 0 0 0 0 0 0 0 0 ...
+##   .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. ..$ : chr [1:12] &quot;y&quot; &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; ...
+##   .. .. .. ..$ : chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. ..- attr(*, &quot;term.labels&quot;)= chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. ..- attr(*, &quot;order&quot;)= int [1:11] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. ..- attr(*, &quot;intercept&quot;)= int 1
+##   .. ..- attr(*, &quot;response&quot;)= int 1
+##   .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+##   .. ..- attr(*, &quot;predvars&quot;)= language list(y, mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)
+##   .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:12] &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; ...
+##   .. .. ..- attr(*, &quot;names&quot;)= chr [1:12] &quot;y&quot; &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; ...
+##  $ model          :&#39;data.frame&#39;: 32 obs. of  12 variables:
+##   ..$ y   : num [1:32] 4 4 4 3 3 3 3 4 4 4 ...
+##   ..$ mpg : num [1:32] 0.151 0.151 0.45 0.217 -0.231 ...
+##   ..$ cyl : num [1:32] -0.105 -0.105 -1.225 -0.105 1.015 ...
+##   ..$ disp: num [1:32] -0.571 -0.571 -0.99 0.22 1.043 ...
+##   ..$ hp  : num [1:32] -0.535 -0.535 -0.783 -0.535 0.413 ...
+##   ..$ drat: num [1:32] 0.568 0.568 0.474 -0.966 -0.835 ...
+##   ..$ wt  : num [1:32] -0.6104 -0.3498 -0.917 -0.0023 0.2277 ...
+##   ..$ qsec: num [1:32] -0.777 -0.464 0.426 0.89 -0.464 ...
+##   ..$ vs  : num [1:32] -0.868 -0.868 1.116 1.116 -0.868 ...
+##   ..$ am  : num [1:32] 1.19 1.19 1.19 -0.814 -0.814 ...
+##   ..$ gear: num [1:32] 0.424 0.424 0.424 -0.932 -0.932 ...
+##   ..$ carb: num [1:32] 0.735 0.735 -1.122 -1.122 -0.503 ...
+##   ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language y ~ mpg + cyl + disp + hp + drat + wt + qsec + vs + am + gear + carb
+##   .. .. ..- attr(*, &quot;variables&quot;)= language list(y, mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)
+##   .. .. ..- attr(*, &quot;factors&quot;)= int [1:12, 1:11] 0 1 0 0 0 0 0 0 0 0 ...
+##   .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. .. ..$ : chr [1:12] &quot;y&quot; &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; ...
+##   .. .. .. .. ..$ : chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. .. ..- attr(*, &quot;term.labels&quot;)= chr [1:11] &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; &quot;hp&quot; ...
+##   .. .. ..- attr(*, &quot;order&quot;)= int [1:11] 1 1 1 1 1 1 1 1 1 1 ...
+##   .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+##   .. .. ..- attr(*, &quot;response&quot;)= int 1
+##   .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+##   .. .. ..- attr(*, &quot;predvars&quot;)= language list(y, mpg, cyl, disp, hp, drat, wt, qsec, vs, am, gear, carb)
+##   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:12] &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; &quot;numeric&quot; ...
+##   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:12] &quot;y&quot; &quot;mpg&quot; &quot;cyl&quot; &quot;disp&quot; ...
+##  - attr(*, &quot;class&quot;)= chr &quot;mvr&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#ploteamos Scores</span>
+obj&lt;-pls.mod$scores
+<span class="kw">plot</span>(obj[,<span class="dv">1</span>],obj[,<span class="dv">2</span>],<span class="dt">pch=</span><span class="dv">21</span>,<span class="dt">bg=</span><span class="kw">rainbow</span>(<span class="kw">nlevels</span>(fct))[fct], <span class="dt">xlab=</span><span class="st">&quot;LV 1&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;LV 2&quot;</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="kw">levels</span>(fct),<span class="dt">fill=</span><span class="kw">rainbow</span>(<span class="kw">nlevels</span>(fct))) <span class="co"># añadimos legenda</span></code></pre></div>
+<p><img src="bookdown-enric_files/figure-html/chunk-pls-2.png" width="672" /></p>
+</div>
+</div>
+<div id="aprendizaje_reforzado" class="section level2">
+<h2><span class="header-section-number">6.2</span> Aprendizaje_Reforzado</h2>
+<p>La máquina se expone a un entorno dónde puede autoentrenarse continuamente mediante prueba y error. Aprende de la experiencia pasada y intenta capturar el mejor conocimiento para tomar decisiones precisas. p.e.) Markov Decision Process</p>
+<div id="procesos-de-decision-de-markov" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Procesos de Decisión de Markov</h3>
+<p>Los Procesos estocástico con la propiedad de Markov son los que la distribución de la probabilidad del valor futuro de una variable aleatoria depende únicamente de su valor presente, siendo independiente de la historia de dicha variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#cargar el paquete MDPtoolbox</span>
+<span class="kw">library</span>(MDPtoolbox)</code></pre></div>
+<pre><code>## Loading required package: Matrix</code></pre>
+<pre><code>## Loading required package: linprog</code></pre>
+<pre><code>## Loading required package: lpSolve</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#crear una matriz de transición (T) para 2 estados y 2 acciones</span>
+T &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">0</span>, <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))
+T[,,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.8</span>, <span class="fl">0.2</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)
+T[,,<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)
+<span class="co">#Dimensions are #states por #states por #actions</span>
+<span class="co">#crear matriz de recompensa (R) de dimensiones #states por #actions</span>
+R &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">1</span>, -<span class="dv">5</span>), <span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)
+<span class="co">#comprobar si para las T y R represent un Porceso de Decision de MArkov bien definido MDP</span>
+<span class="kw">mdp_check</span>(T, R)</code></pre></div>
+<pre><code>## [1] &quot;&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## [1] &quot;&quot; </code></pre></div>
+<p>Es correcto (si el MDP es válido retorna un empty string).</p>
+</div>
+<div id="redes-neuronales-y-deep-learning" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Redes Neuronales y Deep Learning</h3>
+<p>Técnica para construir programas de ordenador que aprenden de datos. Se basa en cómo creemos que funciona nuestro cerebro. Primero, se crea una colección de “neuronas” de software conectadas juntas, de modo a que puedan mandarse mensajes las unas a las otras. Luego,se insta a la red a resolver un problema, que intenta resolver una y otra vez, cada vez estrechando aquellas conexiones que llevan a acertar y disminuyendo aquéllas que llevan a fallar. p.e.) aplicaciones en visión artificial y en coches autónomos, entre muchas otras</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="r-para-visualizar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sumario.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-R_para_aprender.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-enric.pdf", "bookdown-enric.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

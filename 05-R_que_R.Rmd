@@ -1,0 +1,64 @@
+# R que R
+
+He intentado mostrar en esta brevísima introducción a R, las funcionalidades básicas de este lenguaje de Programación estadística y algunas de las aplicaciones posibles. Esto ha sido sólo una muestra para despertar el apetito.
+Uno de los aspectos más positivos de este lenguaje es, precisamente, la activa comunidad de usuarios que existe a su entorno, gracias a la cual es muy fácil obtener soporte para problemas específicos y seguir aprendiendo mediante infinitud de recursos, muchos de ellos gratuitos.
+
+A continuación os dejo una lista de recursos para seguir aprendiendo R que R.
+
+
+##Tutoriales
+
+Algunos tutoriales interesantes para seguir aprendiendo son:
+
+ - [An Introduction to Statistical Learning with Applications in R (ISLR)](http://www-bcf.usc.edu/%7Egareth/ISL/)  de los profesores de Stanford __Trevor Hastie__ y __Rob Tibshirani__. Mucho conocimiento transmitido de un modo muy cálido y relajado.
+
+ - El libro [R for Data Science](http://r4ds.had.co.nz/) de __Hadley Wickham__, experto neozelandés que trabaja en RStudio. Toda una referencia actual en el desarrollo de este lenguage de programación y creador e integrador de gran cantidad de paquetes que facilitan todo el proceso analítico.
+
+ - [R-bloggers](https://www.r-bloggers.com), blog curado por __Tal Galili__, Doctor de la Universidad de Tel Aviv. Enrorme repositorio de posts de miembros de de la comunidad de R a nivel mundial.
+ 
+  - [twotorials](http://www.twotorials.com/) de
+__Anthony Damico__ una introducción muy ágil y divertida a R (videos de 2 minutos usando R en bruto ¡sin Rstudio!).
+
+ - [Data Science Central](http://www.datasciencecentral.com) de __Vincent Granville__
+  
+ - [KDnuggets](http://www.kdnuggets.com/) de __Gregory Piatetsky__
+ 
+ - [Kirk Borne](http://kirkborne.net/) científico de datos principal en la consultora pionera BoozAllen.
+ 
+ - [Analytics Vidhya](https://www.analyticsvidhya.com) blog de un equipo muy activo de analistas de Bombay, liderados por __Kunal Jail__ y que son además excelentes comunicadores y están siempre a la última de los avances en análisis de datos y Machine Learning, lenguajes de programación, etc. Como la gente de Rstudio y Datacamp, también publican útiles "chuletas" o [Cheat Sheets](https://www.analyticsvidhya.com/blog/2017/02/top-28-cheat-sheets-for-machine-learning-data-science-probability-sql-big-data/) Para principiantes pero también para usuarios más avanzados.
+ 
+ - [Variance Explained](http://varianceexplained.org/RData/) de David Robinson
+ videos cortos, super claros y explicativos.
+ 
+ - El libro [Tidy Textmining](http://tidytextmining.com/intro.html), escrito por [Julia Silge](https://juliasilge.com/) y David Robinson.
+ 
+ - [François Husson](http://math.agrocampus-ouest.fr/infoglueDeliverLive/membres/Francois.Husson), análisis de datos multivariantes y técnicas de clusterización con R.
+ 
+ - Para trabajar con predicciones en series temporales es muy útil el trabajo del profesor [Rob J Hyndman](https://www.otexts.org/fpp) de la Monash University, creador del paquete [Forectast](http://robjhyndman.com/software/forecast/")
+
+Otros recursos abiertos y gratuitos útiles son:
+
+ - Los excelentes materiales del curso [CSI E-109](http://cm.dce.harvard.edu/2014/01/14328/publicationListing.shtml) del Harvard Distance Education, impartido por los porfesores de Harvard _professors __Joe Blitzstein__, __Hanspeter Pfister__ y __Verena Kaynig-Fittkau__.
+
+ - Inventarios de recursos intersantes como [Data Science Masters](http://datasciencemasters.org) de __Clare Corthell__ de Summer.ai 
+
+ - [Learn Data Science](http://learnds.com/) de __Nitin Borwankar__.
+
+ - [Kaggle](https://www.kaggle.com) Plataforma, red social de científicos de datos y entorno para competiciones de proyectos de minería de datos, aprendizaje automático y modelos predicitivos, creada por Anthony Goldbloom.
+
+Coursera, Udacity y Datacamp, entre otros ponen al alcance de todos el poder iniciarse en ciencia de datos y R.
+
+Finalmente existen numerosos blogs personales de doctorandos, *practitioners* o usuarios apasionados de R que muestran modos de analizar datos para casos específicos. También es sumamente útil encontrar [__notebooks__](http://rmarkdown.rstudio.com/r_notebooks.html) donde se conjugan scripts de código y explicaciones de los mismos. 
+
+
+
+##Obtener ayuda
+
+Para obtener ayuda en R sobre una función -por ejemplo sobre `lm`- puedo hacer `?lm`, `help(lm)` o `help ("lm")` y me aparecerá la ayuda en el visor del entorno de R. 
+
+También puede ser conveniente buscar ejemplos de esa función con `example (lm)`.
+
+Cuando al ejecutar comandos nos aparece un error (mensaje de texto en rojo en la consola de R), es importante leerlo para aprender de él (¡como en la vida!)
+
+Otra gran opción que tenemos para resolver errores es buscar en la web de preguntas y respuestas [__stackoverflow__](https://stackoverflow.com) https://stackoverflow.com. 
+Si simplemente copiamos y pegamos el error que nos aparece en R en Google, es muy probable que nos diriga a stackoverflow. Y es muy probable también que en uno de sus foros alguien haya solucionado ya el problema que buscamos u otro similar que nos ayude a entender. De igual modo podemos contribuir allí y aclarar dudas a otros. Estos foros de preguntas y respuestas son, por lo general, una enorme fuente de aprendizaje y una inyección de optimismo en la humanidad.

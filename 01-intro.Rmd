@@ -1,0 +1,238 @@
+#Intro
+
+R [@R-r] es un lenguaje de programación estadística open source, versátil y potente. Puede descargarse desde la web del proyecto [__R-project__](https://www.r-project.org) https://www.r-project.org.
+
+Una vez instalado uno puede ya empezar a usarlo directamente desde su consola, pero la opción más conveniente para trabajar con R es instalarse acto seguido el Interfaz o entorno de desarrollo integrado (IDE) desarrollado por [__RStudio__](https://www.rstudio.com) https://www.rstudio.com (también gratuito), que facilita mucho trabajar con distintos archivos, descargarse paquetes para facilitar la realización de todo tipo de funciones, generar visualizaciones y tenerlo todo ordenado y a mano.
+
+##Manejarse en el entorno de R
+
+¿Te lo descargaste ya? ¡fantástico! ábrelo pues y una vez en la consola puedes escribir líneas de código después del símbolo `>` o _command prompt_  y ejecutarlas una a una dándole a `Enter` 
+
+Si pruebas a escribir una operación sencilla como `3+4` y lo ejecutas obtienes el resultado.
+
+```{r chunk-sum}
+3+4
+```
+
+
+¡Bien! 
+También es conveniente usar la __flecha hacia arriba del teclado__ para ir a comandos escritos previamente (y así poder recuperar cosas para no tenerlas que volver a escribir)
+
+Luego puedes guardar las líneas de código que hayas escrito en un archivo con extension `.R` para abrirlo en otra ocasión desde el mismo R -o para enviarle a un amig@ y que lo abra en el suyo- y así poder ejecutarlas todas a la vez. Del mismo modo puedes buscar en internet código que otros hayan escrito y reusarlo. 
+¿no es mágico?
+
+Desde un archivo puedes poner el cursor delante de una línea y ejecutarla con `ctrl + Enter` o bien seleccionar unas cuantas líneas de código con el cursor y hacer lo mismo `ctrl + Enter` (o desde el menú hacer clic en `Run`)
+
+Con `Ctrl + A` puedes seleccionarlo todo y con `Ctrl + R` ejecutarlo todo.
+
+
+R distingue mayúsculas y minúsculas (algo que no conviene olvidar).
+
+##Variables
+
+En R puedo crear todo tipo de __variables__ asignando algo a un nombre mediante `<-`.
+
+Por ejemplo puedo crear una variable numérica escribiendo `x <- 1` u otro tipo de variable que puede ser, por ejemplo de caracteres textuales (_strings_) escribiendo `z <- "pepito"` Nótese que en este caso la pongo entrecomillada. Nótese, asimismo, que el nombre de las variables que creo lo asigno yo (les he llamado `X` y `Z` como podría haberles llamado `numerito` o `palabrita`).
+
+Ojo: los hay, no tan puristas con la gramática de R, que usan para asignar objetos `=` en vez de `<-`. En ambos casos funciona igual.
+
+##Vectores
+
+Un __vector__ es un objeto de un solo tipo de datos (puede ser númerico o de caracteres o de otras variables categóricas tales como factores, pero todos los elementos deben ser del mismo tipo)
+
+Puedo crear un vector usando `c()` (combine)
+
+```{r chunk-combine}
+c(1,2)
+```
+O también puedo crear un vector de números entre 10 y 20 usando `:`
+
+
+```{r chunk-vectorrang}
+c(10:20)
+```
+
+O un vector de nombres:
+
+```{r chunk-vectornames}
+c("pepito","grillo", "ternera")
+```
+
+Como he hecho antes, puedo asignar un vector a una variable
+`x <- (213:221)` y preguntar por sus propiedades: por ejemplo ¿qué clase de vector es? con la función `class()`
+```{r chunk-class}
+x <- (213:221)
+class(x)
+```
+`X` es un vector de números enteros (_integers_). 
+
+Nota: en R es importante tener en cuenta qué tipo de objetos manejamos, porque según qué tipo tenemos podemos hacer unas cosas u otras. Lo iremos viendo. Sigamos.
+<br>
+
+```{r chunk-lenght}
+#longitud (número de elementos que contiene)
+length(x)
+```
+Contiene 9 elementos.
+
+Nota: La almohadilla `#` se usa para comentar cosas que no queremos que se ejecuten en el código (todo lo que pongamos después de ella no se ejecutará). Comentar nuestros scripts de código es útil para que otros -¡incluidos nosotros mismos en el futuro!- entiendan al leerlo qué pretendíamos hacer. 
+
+Va, pongamos otra cita aquí; esta que me gusta:
+
+<br>
+
+> "Cualquier tonto puede escribir código que un ordenador entienda. Sólo los buenos programadores escriben código que los humanos entienden."
+>
+> --- Martin Fowler
+
+<br>
+<br>
+
+Sigamos preguntando cosas a una variable; por ejemplo si es numérica:
+
+```{r chunk-num}
+#¿es numérico?
+is.numeric(x) 
+```
+Verdadero, sí es numérico.
+
+La expresión `x[2]` me dará el segundo elemento del vector `x`
+```{r chunk-second, echo = FALSE}
+x[2]
+```
+
+Incluso puedo crear una variable nueva (`y`) que tenga los elementos del cuarto al octavo de `x`:
+```{r chunk-newvarrang}
+y <- x [4:8]
+y
+```
+
+
+
+##Tablas
+
+También puedo crear tablas mediante `data.frame` y luego ir listando las columnas de la tabla separadas por comas. Una columna sería: `nombre_variable=c(caso1, caso2, etc.)`. Una tabla con varias columnas se armaría del siguiente modo:
+
+```{r chunk-df}
+df<- data.frame( ID=1:4,
+     Nombre=c("Pepito","Juanito","Carlitos","Pedrito"),
+     Cromos=c(35,15,3,21), 
+     Edad=c(12,13,9,10),
+     Deporte=c("Waterpolo","Futbol","Waterpolo","Petanca"))     
+df
+```
+                    
+Entonces puedo preguntar a una tabla:
+```{r chunk-prifi}
+# muéstrame la primera fila
+df[1,] 
+```
+
+```{r chunk-terco}
+# muéstrame la tercera columna
+df[,3] 
+```
+que también puedo expresar como `df[[3]]`.
+
+Para ver una columna de una tabla también puedo usar el nombre de la tabla, seguido del símbolo del dólar `$`, seguido del nombre de la columna que me interesa:
+
+```{r chunk-coleda}
+# muéstrame la columna Edad
+df$Edad 
+```
+
+Ahora quiero fijarme sólo en los cromos y la edad de Pepito y Juanito:
+```{r chunk-fil}
+# filas 1 y 2, columnas 3 y 4
+df[1:2,3:4] 
+```
+
+O si sólo me interesan unas filas determinadas:
+```{r chunk-fil2}
+# las filas 1 y 3`
+df[c(1,3),] 
+```
+
+Estas opciones de filtrado son útiles porque me permiten por ejemplo crear una nueva tabla limpia -llamémosle `df2`- con sólo las filas que quiero de `df` (lo haria con la expresión `df2 <- df[c(1,3),]`).
+
+También puedo usar operadores:
+
+ - `==` igual que; 
+ - `>=` igual o mayor que; 
+ - `>` mayor que; 
+ - `&` AND; 
+ - `|` OR; 
+ - `!` NOT. 
+
+A ver ¿quién tiene más de 20 cromos?
+```{r chunk-mascromos}
+df[df$Cromos>20,2]
+```
+
+(nótese que abajo del resultado me indica que estos nombres son considerados como 4 valores distintos o niveles (`levels`); se trata, por tanto, de variables categóricas, también llamadas `Factores`)
+
+Vemos pues que los __data frames__ son tablas formadas por vectores y/o factores de la misma longitud. Tan sólo mencionar, por ahora, que en R, existen otros tipos de tablas; por ejemplo __arrays__ (tablas con _K_ dimensiones) o __matrices__ (array de 2 dimensiones). Otros objetos interesantes son las __listas__ (que pueden contener cualquier objeto, por ejemplo, varios vectores diferentes). Dejemoslo aquí de momento.
+
+
+##Funciones
+
+Hemos visto cómo usar funciones tales como por ejemplo `length()` para calcular el número de elementos que contiene una variable.
+
+Si quisiera cambiar el tipo de variable usaria funciones como `as.numeric()` para cambiar a variable numérica o `as.character()` para cambiar a variable de carácteres.
+
+Como vemos, una función se expresa con el nombre de la función seguida de los datos y las variables dónde queremos aplicar la función (los `argumentos`) que ponemos dentro de un paréntesis.
+
+Otras funciones útiles son:
+
+`nrow(df)` me dice el numero de filas de la tabla df
+
+`ncol(df)` me dice el numero de columnas de la tabla df
+
+Alternativamente, puedo usar la función `dim()` para preguntar por ambas dimensiones (filas y columnas):
+```{r chunk-dim}
+dim(df)
+```
+
+Con `dim` nos hemos informado de que la tabla `df` tiene 4 filas y 5 columnas.
+
+
+
+`summary(df)` me sirve para obtener un descripción de los principales parámetros estadisticos de `df`:
+```{r chunk-summary}
+summary(df)
+```
+
+`head()` me permite ver las primeras 6 filas de una tabla 
+
+`tail()` las 6 últimas
+
+Para obtener la mediana de Edad (cuarta columna en este caso) de `df` podriamos hacer:
+```{r chunk-mean}
+mean(df[,4])
+```
+
+
+Para repetir algo un número de veces, uso `rep()`:
+```{r chunk-repalgo}
+rep("algo", times=3)
+```
+
+
+Nota: Por defecto R transforma los carácteres de una tabla en factores (categorias) al leerla; esto puede causar cierta confusión porque hay casos, por ejemplo, en que el texto de una columna sí queremos que se entienda como una categoria (p.ej. hombre/mujer, región, tipología, etc.), pero otras veces podemos querer importar el texto como tal sin categorizarlo. Esto lo podemos controlar con el argumento `stringsAsFactors`; si queremos que nuestros valores sigan siendo carácteres y no queremos que se nos cambien a factores, lo debemos indicar específicamente con  `stringsAsFactors = False`.
+(muchos errores en R se deben a no tener claro qué tipo datos tratamos).
+
+
+##Paquetes
+
+Cuando uno crea en R una serie de funciones para hacer algo, lo puede guardar como un __paquete__ para que otros puedan reusarlo. Los conceptos de reutilización y reproducibilidad en un lenguaje de acceso abierto como R son sumamente importantes.
+Hay infinidad de paquetes disponibles que podemos utilizar para un sinfín de aplicaciones. Ante un problema analítico específico que debamos resolver, es muy probable que exista ya un paquete que resuelva ese mismo problema en el repositorio oficial de R, llamado [CRAN](https://cran.r-project.org/) o bien en otro repositorio importante de paquetes -más dedicado a tratamientos bioestadísticos- llamado [Bioconductor](https://www.bioconductor.org/) 
+
+Para usar un paquete en R, debo primero tenerlo instalado. 
+Lo hago escribiendo
+
+`install.packages("nombre_del_paquete")`
+
+y luego puedo cargarlo en cada sesión con
+
+`library(nombre_del_paquete)`
+ 
