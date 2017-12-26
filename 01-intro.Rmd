@@ -228,11 +228,11 @@ Cuando uno crea en R una serie de funciones para hacer algo, lo puede guardar co
 Hay infinidad de paquetes disponibles que podemos utilizar para un sinfín de aplicaciones. Ante un problema analítico específico que debamos resolver, es muy probable que exista ya un paquete que resuelva ese mismo problema en el repositorio oficial de R, llamado [CRAN](https://cran.r-project.org/) o bien en otro repositorio importante de paquetes -más dedicado a tratamientos bioestadísticos- llamado [Bioconductor](https://www.bioconductor.org/) 
 
 Para usar un paquete en R, debo primero tenerlo instalado. 
-Lo hago escribiendo
+Lo hago escribiendo:
 
 `install.packages("nombre_del_paquete")`
 
-y luego puedo cargarlo en cada sesión con
+y luego puedo cargarlo en cada sesión con:
 
 `library(nombre_del_paquete)`
  

@@ -1,5 +1,5 @@
 --- 
-title: "R que R"
+title: "R <- world #intro"
 author: "Enric Escorsa O'Callaghan"
 date: "1/4/2017"
 site: bookdown::bookdown_site
@@ -48,9 +48,9 @@ R permite obtener todo tipo de datos (estructurados, no estructurados, numérico
 
 Todo ello, se puede hacer en R de una forma ágil, amigable, gratuita, fresca y no encorsetada, en el contexto de una enorme y dinámica comunidad global de usuarios que favorece la colaboración y el aprendizaje continuo, la usabilidad y reproducibilidad de los resultados que se generan y la incorporación de los últimos avances científicos en análisis de datos y aprendizaje automático (*Machine Learning*).
 
-Este libro se escribió usando R -sí, ¡con R también podrás escribir libros!- mediante el método de escritura **Markdown**, que permite  ir creando los contenidos sin preocuparte del formato final y luego exportar fácilmente a los formatos deseados (por ejemplo: PDF, ePub, HTML para publicarlo en una web, etc.)
+Este libro se escribió usando R -sí, ¡con R también podrás escribir libros!- mediante el método de escritura **Markdown**, que permite  ir creando los contenidos sin preocuparte demasiado del formato final y luego exportar fácilmente a los formatos deseados (por ejemplo: PDF, ePub, HTML para publicarlo en una web, etc.)
 
-Si quisieras escribir un libro como este desde R, lo puedes hacer instalándote el paquete __bookdown__ [@R-bookdown]:
+Si quisieras escribir un libro como este desde R, lo puedes hacer instalándote el paquete __bookdown__ [@R-bookdown]. Ya hablaremos de qué son los paquetes - _packages_ en inglés- y que nos permiten; empecemos.
 
 ```{r eval=FALSE, echo=FALSE}
 devtools::install_github("rstudio/bookdown")
@@ -59,7 +59,7 @@ devtools::install_github("rstudio/bookdown")
 
 ## Indice de contenidos
 
-El libro se estructura en los siguientes capítulos (si estás leyendo la versión web del libro a la izquierda de la pantalla verás una barra de navegación que puedes usar para para avanzar en los contenidos):
+El libro se estructura en los siguientes capítulos (si estás leyendo la versión web del libro a la izquierda de la pantalla -o desplegándola desde arriba- verás una barra de navegación que puedes usar para para avanzar en los contenidos):
 
 
 - Capítulo \@ref(prefacio): __Prefacio__

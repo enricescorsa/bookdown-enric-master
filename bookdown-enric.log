@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6350 64-bit) (preloaded format=xelatex 2017.9.29)  4 DEC 2017 12:41
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6350 64-bit) (preloaded format=xelatex 2017.9.29)  26 DEC 2017 19:16
 entering extended mode
 **./bookdown-enric.tex
 (bookdown-enric.tex
@@ -1011,7 +1011,7 @@ Chapter 2.
 
 ]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 310.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 313.
 [8] [9] [10] [11] [12
 
 ]
@@ -1117,7 +1117,7 @@ File: bookdown-enric_files/figure-latex/chunk-ggmapbcn-1.pdf Graphic file (type
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [39]
-Overfull \hbox (55.24498pt too wide) in paragraph at lines 1668--1668
+Overfull \hbox (55.24498pt too wide) in paragraph at lines 1672--1672
 []\TU/lmtt/m/n/10 ## Source: "_bookdown_files/shapefile_distrito_barcelona.shp"
 , layer: "shapefile_distrito_barcelona"[] 
  []
@@ -1138,17 +1138,17 @@ Chapter 7.
 ] [46
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1841.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1845.
 [47]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1841.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1845.
 (bookdown-enric.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1841.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1841.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1845.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1845.
  ) 
 Here is how much of TeX's memory you used:
  22813 strings out of 427834
  417816 string characters out of 3152470
- 562470 words of memory out of 3000000
+ 562518 words of memory out of 3000000
  26531 multiletter control sequences out of 15000+200000
  543015 words of font info for 55 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191

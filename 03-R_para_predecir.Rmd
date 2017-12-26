@@ -75,7 +75,7 @@ El modelo estima, por tanto, la probabilidad de una respuesta binaria (categóri
 
 Probemos con un ejemplo tonto en base a nuestros datos: probabilidad de ser chica en función del número de cromos que tiene una persona.
 
-```{r chunk-rlogis}
+```{r chunk-rlogis, message=FALSE}
 library(tidyverse)
 library(ggplot2)
 misdatos<-misdatos%>%

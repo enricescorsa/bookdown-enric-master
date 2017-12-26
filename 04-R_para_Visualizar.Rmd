@@ -127,7 +127,7 @@ plot(red, layout=layout.fruchterman.reingold, vertex.size=9,
 
 Apreciamos un grafo resultante cuyos nodos son los nombres de las personas y los enlaces los vínculos que éstas establecen (en este caso intercambio de cromos).
 
-Podemos llegar a hacer grafos mucho más complejos que este: reflejar varias variables en ellos, distintos layouts, aplicar conceptos de la teoría de grafos (centralidad, cercanía, intermediacion) para entenderlos mejor, etc.
+Podemos llegar a hacer grafos mucho más sofisticados que este: reflejar varias variables en ellos, distintos layouts, aplicar conceptos de la teoría de grafos (centralidad, cercanía, intermediacion) para entenderlos mejor, etc.
 
 Para aprender más acerca de representaciones de redes con R recomiendo leer los excelentes materiales al respecto de [Katya Ognyanova](http://kateto.net/).
 
