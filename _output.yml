@@ -3,7 +3,11 @@ bookdown::gitbook:
   config:
     toc:
       before: |
+<<<<<<< HEAD
         <li><a href="./">R <- world #intro</a></li>
+=======
+        <li><a href="./">R <- world #intro </a></li>
+>>>>>>> aec5ffe5d1f9b843de72b30fc89451dfc0bcea4a
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Publicado con bookdown</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
