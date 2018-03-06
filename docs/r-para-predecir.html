@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>R &lt;- world #intro</title>
-  <meta name="description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <title>R que R</title>
+  <meta name="description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa O’Callaghan">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="R &lt;- world #intro" />
+  <meta property="og:title" content="R que R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="fotoenric2.png" />
-  <meta property="og:description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa" />
+  <meta property="og:description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa O’Callaghan" />
   <meta name="github-repo" content="enricescorsa/bookdown-enric" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R &lt;- world #intro" />
+  <meta name="twitter:title" content="R que R" />
   
-  <meta name="twitter:description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa" />
+  <meta name="twitter:description" content="This is an introductory book on R programming language in Spanish written by Enric Escorsa O’Callaghan" />
   <meta name="twitter:image" content="fotoenric2.png" />
 
 <meta name="author" content="Enric Escorsa O’Callaghan">
@@ -49,41 +49,69 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -99,7 +127,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R <- world #intro</a></li>
+<li><a href="./">R que R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prefacio</a><ul>
@@ -157,7 +185,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R &lt;- world #intro</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R que R</a>
           </h1>
         </div>
 
@@ -166,19 +194,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="r-para-predecir" class="section level1">
-<h1><span class="header-section-number">Capitulo 4</span> R para Predecir</h1>
+<h1><span class="header-section-number">Capítulo 4</span> R para Predecir</h1>
 <p><br></p>
 <blockquote>
 <p>“The problem with experts is that they don’t know what they don’t know….”</p>
 <p>— Nassim Taleb</p>
 </blockquote>
-<p><br> <br></p>
+<p><br>
+<br></p>
 <p>Con R es también sencillo aplicar modelos de regresión y correlación a nuestros datos, modelos estadísticos predictivos, etc.</p>
 <div id="correlacion" class="section level2">
 <h2><span class="header-section-number">4.1</span> Correlación</h2>
 <p>No hemos comentado todavía que en el repositorio de R existen varios datasets de ejemplo con los que podemos trabajar y que podemos invocar con sólo llamarlos por su nombre. Uno de ellos es <em>mtcars</em>. Se trata de una base de datos de modelos de coches y sus distintas prestaciones o características técnicas expresadas como variables.</p>
 <p>Echémosle un vistazo:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(mtcars)</code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">head</span>(mtcars)</a></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
@@ -187,12 +216,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 ## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 <p>Veamos,por ejemplo, con la ayuda de la función <strong>cor()</strong> si existen correlaciones entre las variables <em>mpg</em> (miles per galon), <em>cyl</em> (cilindrada), etc.:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ponemos las variables mpg, cyl y disp como filas de una matriz:</span>
-x &lt;-<span class="st"> </span>mtcars[<span class="dv">1</span>:<span class="dv">3</span>] 
-<span class="co"># y hp, drat y wt como columnas de la matriz:</span>
-y &lt;-<span class="st"> </span>mtcars[<span class="dv">4</span>:<span class="dv">6</span>]
-<span class="co">#la funcion cor() nos da la correlacion en cada caso:</span>
-<span class="kw">cor</span>(x, y)</code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co"># ponemos las variables mpg, cyl y disp como filas de una matriz:</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2">x &lt;-<span class="st"> </span>mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] </a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="co"># y hp, drat y wt como columnas de la matriz:</span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4">y &lt;-<span class="st"> </span>mtcars[<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>]</a>
+<a class="sourceLine" id="cb62-5" data-line-number="5"><span class="co">#la funcion cor() nos da la correlacion en cada caso:</span></a>
+<a class="sourceLine" id="cb62-6" data-line-number="6"><span class="kw">cor</span>(x, y)</a></code></pre></div>
 <pre><code>##              hp       drat         wt
 ## mpg  -0.7761684  0.6811719 -0.8676594
 ## cyl   0.8324475 -0.6999381  0.7824958
@@ -204,19 +233,20 @@ y &lt;-<span class="st"> </span>mtcars[<span class="dv">4</span>:<span class="dv
 <p>Usamos regresión cuando tenemos un atributo <code>X</code> y queremos predecir una Respuesta o Variable de Salida <code>Y</code>, por ejemplo para saber cuanto mide alguien en función de cuanto pesa.</p>
 <div id="regresion-lineal" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Regresión lineal</h3>
-<p>Si tenemos sólo una variable o atributo hablamos de Regresión Linear Simple. Cuando tenemos múltiples atributos (ej. x1, x2, x3,..) sería Regresión Linear Múltiple.</p>
+<p>Si tenemos sólo una variable o atributo hablamos de Regresión Linear Simple.
+Cuando tenemos múltiples atributos (ej. x1, x2, x3,..) sería Regresión Linear Múltiple.</p>
 <p>Se aplica la fórmula de la ecuación lineal: <code>y = a + b * x</code> y se trata de determinar los coeficientes <code>a</code> (determina dónde la línea intersecta con el eje Y) y <code>b</code> (pendiente de la línea).</p>
 <p>Veamos este caso sencillo y tratemos de trazar la línea de regresión en base a alturas y pesos de una población de 10 personas:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">156</span>, <span class="dv">155</span>, <span class="dv">142</span>, <span class="dv">177</span>, <span class="dv">139</span>, <span class="dv">156</span>, <span class="dv">171</span>, <span class="dv">169</span>, <span class="dv">150</span>, <span class="dv">175</span>)
-peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">50</span>, <span class="dv">53</span>, <span class="dv">111</span>, <span class="dv">45</span>, <span class="dv">71</span>, <span class="dv">75</span>, <span class="dv">73</span>, <span class="dv">60</span>, <span class="dv">76</span>)
-<span class="kw">plot</span>(peso, altura)</code></pre></div>
-<p><img src="bookdown-enric_files/figure-html/chunk-regli-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(peso, altura, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="fl">1.3</span>, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, 
-     <span class="dt">main =</span> <span class="st">&quot;Altura vs Peso&quot;</span>, 
-     <span class="dt">xlab =</span> <span class="st">&quot;Peso (kg)&quot;</span>, 
-     <span class="dt">ylab =</span> <span class="st">&quot;Altura (cm)&quot;</span>)
-<span class="co">#modelo lineal</span>
-<span class="kw">lm</span>(altura ~<span class="st"> </span>peso) </code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">altura &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">156</span>, <span class="dv">155</span>, <span class="dv">142</span>, <span class="dv">177</span>, <span class="dv">139</span>, <span class="dv">156</span>, <span class="dv">171</span>, <span class="dv">169</span>, <span class="dv">150</span>, <span class="dv">175</span>)</a>
+<a class="sourceLine" id="cb64-2" data-line-number="2">peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83</span>, <span class="dv">50</span>, <span class="dv">53</span>, <span class="dv">111</span>, <span class="dv">45</span>, <span class="dv">71</span>, <span class="dv">75</span>, <span class="dv">73</span>, <span class="dv">60</span>, <span class="dv">76</span>)</a>
+<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="kw">plot</span>(peso, altura)</a></code></pre></div>
+<p><img src="bookdown-rquer_files/figure-html/chunk-regli-1.png" width="672" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">plot</span>(peso, altura, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="fl">1.3</span>, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, </a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">     <span class="dt">main =</span> <span class="st">&quot;Altura vs Peso&quot;</span>, </a>
+<a class="sourceLine" id="cb65-3" data-line-number="3">     <span class="dt">xlab =</span> <span class="st">&quot;Peso (kg)&quot;</span>, </a>
+<a class="sourceLine" id="cb65-4" data-line-number="4">     <span class="dt">ylab =</span> <span class="st">&quot;Altura (cm)&quot;</span>)</a>
+<a class="sourceLine" id="cb65-5" data-line-number="5"><span class="co">#modelo lineal</span></a>
+<a class="sourceLine" id="cb65-6" data-line-number="6"><span class="kw">lm</span>(altura <span class="op">~</span><span class="st"> </span>peso) </a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = altura ~ peso)
@@ -224,49 +254,45 @@ peso &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">83
 ## Coefficients:
 ## (Intercept)         peso  
 ##    120.5135       0.5522</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#vemos que el intercept es 120.5135 y el pendiente 0.5522. </span>
-<span class="co">#Entonces finalmente trazamos la linea que mejor se ajusta (linea de regresión) </span>
-<span class="co">#en nuestro plot:</span>
-<span class="kw">abline</span>(<span class="fl">120.5135</span>, <span class="fl">0.5522</span>)
-<span class="co">#o sino también podemos visualizar la linea de regresion con:</span>
-<span class="kw">abline</span>(<span class="kw">lm</span>(altura ~<span class="st"> </span>peso))</code></pre></div>
-<p><img src="bookdown-enric_files/figure-html/chunk-regli-2.png" width="672" /></p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="co">#vemos que el intercept es 120.5135 y el pendiente 0.5522. </span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="co">#Entonces finalmente trazamos la linea que mejor se ajusta (linea de regresión) </span></a>
+<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="co">#en nuestro plot:</span></a>
+<a class="sourceLine" id="cb67-4" data-line-number="4"><span class="kw">abline</span>(<span class="fl">120.5135</span>, <span class="fl">0.5522</span>)</a>
+<a class="sourceLine" id="cb67-5" data-line-number="5"><span class="co">#o sino también podemos visualizar la linea de regresion con:</span></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6"><span class="kw">abline</span>(<span class="kw">lm</span>(altura <span class="op">~</span><span class="st"> </span>peso))</a></code></pre></div>
+<p><img src="bookdown-rquer_files/figure-html/chunk-regli-2.png" width="672" /></p>
 </div>
 <div id="regresion-logistica" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Regresión logística</h3>
-<p>Otro tipo de regresión que nos es útil a menudo es la regresión logística. Se trata de un modelo de regresión dónde la variable dependiente es categórica. Por ejemplo: la probabilidad de Aprobar (SI o NO) un examen en función del número de horas estudiadas, o la determinación de si un mail es <em>SPAM</em> o no en función de varios atributos o variables independientes (p.ej. el número de palabras, si contiene imágenes, links, etc. )</p>
+<p>Otro tipo de regresión que nos es útil a menudo es la regresión logística. Se trata de un modelo de regresión dónde la variable dependiente es categórica.
+Por ejemplo: la probabilidad de Aprobar (SI o NO) un examen en función del número de horas estudiadas, o la determinación de si un mail es <em>SPAM</em> o no en función de varios atributos o variables independientes (p.ej. el número de palabras, si contiene imágenes, links, etc.).</p>
 <p>El modelo estima, por tanto, la probabilidad de una respuesta binaria (categórica) en base a uno o más predictores (o variables independientes) mediante una función logística.</p>
 <p>Probemos con un ejemplo tonto en base a nuestros datos: probabilidad de ser chica en función del número de cromos que tiene una persona.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.4.2</code></pre>
-<pre><code>## Warning: package &#39;forcats&#39; was built under R version 3.4.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-misdatos&lt;-misdatos%&gt;%
-<span class="co">#creo la variable Es_Chica</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Es_chica=</span><span class="kw">as.numeric</span>(Sexo==<span class="st">&quot;f&quot;</span>))
-<span class="co">#uso geom_smooth para definir la curva de tendencia de la regresión logística</span>
-regresion_logistica&lt;-<span class="kw">ggplot</span>(<span class="dt">data=</span> misdatos,<span class="kw">aes</span>(<span class="dt">x=</span> Cromos,<span class="dt">y=</span> Es_chica)) +
-<span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span><span class="st">&quot;glm&quot;</span>,<span class="dt">method.args=</span><span class="kw">list</span>(<span class="dt">family=</span><span class="st">&quot;binomial&quot;</span>)) +
-<span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;¿Es chica? 0(No) -1(Sí)&quot;</span>)
-regresion_logistica</code></pre></div>
-<p><img src="bookdown-enric_files/figure-html/chunk-rlogis-1.png" width="672" /></p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">misdatos &lt;-<span class="st"> </span>misdatos <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb68-4" data-line-number="4"><span class="co">#creo la variable Es_Chica</span></a>
+<a class="sourceLine" id="cb68-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Es_chica =</span> <span class="kw">as.numeric</span>(Sexo <span class="op">==</span><span class="st"> &quot;f&quot;</span>))</a>
+<a class="sourceLine" id="cb68-6" data-line-number="6"><span class="co">#uso geom_smooth para definir la curva de tendencia de la regresión logística</span></a>
+<a class="sourceLine" id="cb68-7" data-line-number="7">regresion_logistica &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> misdatos, <span class="kw">aes</span>(<span class="dt">x =</span> Cromos,<span class="dt">y =</span> Es_chica)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-8" data-line-number="8"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>, <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-9" data-line-number="9"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;¿Es chica? 0(No) -1(Sí)&quot;</span>)</a>
+<a class="sourceLine" id="cb68-10" data-line-number="10">regresion_logistica</a></code></pre></div>
+<p><img src="bookdown-rquer_files/figure-html/chunk-rlogis-1.png" width="672" /></p>
 </div>
 </div>
 <div id="proyectar-forecast" class="section level2">
 <h2><span class="header-section-number">4.3</span> Proyectar (Forecast)</h2>
 <p>Veamos ahora otro caso; supongamos que hemos ido anotando desde el año 2000 en un archivo las ventas de cada mes de nuestro negocio. Estaria bien poder predecir cuáles van a ser las de los proximos meses.</p>
-<p>Podemos usar el paquete <strong>Forecast</strong> <span class="citation">(Hyndman <a href="#ref-R-forecast">2017</a>)</span> desarrollado y mantenido por Rob Hyndman, para aplicar modelos proyectivos conocidos (tales como el modelo ARIMA)</p>
+<p>Podemos usar el paquete <strong>Forecast</strong> <span class="citation">(Hyndman et al. <a href="#ref-R-forecast">2017</a>)</span> desarrollado y mantenido por Rob Hyndman, para aplicar modelos proyectivos conocidos (tales como el modelo ARIMA).</p>
 <p>Lo haríamos del siguiente modo:</p>
 <p>Leemos los datos a partir de nuestro archivo ventas.csv.</p>
 <p><code>df &lt;- read.csv(&quot;C:/.../ventas.csv&quot;)</code></p>
 <p>Transformamos los datos en un objeto temporal (<em>time series object</em>) del tipo <code>ts</code> (indicamos que los datos son mensuales y que el periodo de inicio es Enero del 2000).</p>
 <p>Mostramos los datos:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;_bookdown_files/ventas.csv&quot;</span>)
-series &lt;-<span class="st"> </span><span class="kw">ts</span>(df, <span class="dt">frequency =</span> <span class="dv">12</span>, <span class="dt">start =</span> <span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">1</span>))
-<span class="kw">print</span>(series)</code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;_bookdown_files/ventas.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb69-2" data-line-number="2">series &lt;-<span class="st"> </span><span class="kw">ts</span>(df, <span class="dt">frequency =</span> <span class="dv">12</span>, <span class="dt">start =</span> <span class="kw">c</span>(<span class="dv">2000</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="kw">print</span>(series)</a></code></pre></div>
 <pre><code>##        Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov
 ## 2000  6938  7524  8475  9401  9558  9182  9103 10513  9573 10254 11187
 ## 2001  7502  7524  8766  9867 10063  9635  9794 10628 10013 10346 11760
@@ -306,22 +332,25 @@ series &lt;-<span class="st"> </span><span class="kw">ts</span>(df, <span class=
 ## 2016 26718
 ## 2017 27110</code></pre>
 <p>Ploteamos la serie temporal. Nos aseguramos que el eje <code>y</code> empieza por cero.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(series, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">35000</span>))</code></pre></div>
-<p><img src="bookdown-enric_files/figure-html/chunk-plotseries-1.png" width="672" /></p>
-<p>Generemos ahora una prevision para los próximos 20 periodos en base al modelo ARIMA. Lo hacemos en dos pasos: 1) creamos un modelo usando la función <code>auto.arima</code> del paquete <code>forecast</code> 2) generamos una proyección en base al modelo usando la función <code>forecast</code></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">plot</span>(series, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">35000</span>))</a></code></pre></div>
+<p><img src="bookdown-rquer_files/figure-html/chunk-plotseries-1.png" width="672" /></p>
+<p>Generemos ahora una prevision para los próximos 20 periodos en base al modelo ARIMA. Lo hacemos en dos pasos:
+1) creamos un modelo usando la función <code>auto.arima</code> del paquete <code>forecast</code>
+2) generamos una proyección en base al modelo usando la función <code>forecast</code></p>
 <p>Representamos gráficamente la previsión:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(forecast)
-model_arima &lt;-<span class="st"> </span><span class="kw">auto.arima</span>(series)
-fcast_arima &lt;-<span class="st"> </span><span class="kw">forecast</span>(model_arima, <span class="dt">h =</span> <span class="dv">20</span>)
-<span class="kw">plot</span>(fcast_arima)</code></pre></div>
-<p><img src="bookdown-enric_files/figure-html/chunk-forecast-1.png" width="672" /></p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">require</span>(forecast)</a></code></pre></div>
+<pre><code>## Loading required package: forecast</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">model_arima &lt;-<span class="st"> </span><span class="kw">auto.arima</span>(series)</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">fcast_arima &lt;-<span class="st"> </span><span class="kw">forecast</span>(model_arima, <span class="dt">h =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="kw">plot</span>(fcast_arima)</a></code></pre></div>
+<p><img src="bookdown-rquer_files/figure-html/chunk-forecast-1.png" width="672" /></p>
 
 </div>
 </div>
 <h3>Referencias</h3>
 <div id="refs" class="references">
 <div id="ref-R-forecast">
-<p>Hyndman, Rob. 2017. <em>Forecasting Functions for Time Series and Linear Models</em>. <a href="http://github.com/robjhyndman/forecast" class="uri">http://github.com/robjhyndman/forecast</a>.</p>
+<p>Hyndman, Rob, Mitchell O’Hara-Wild, Christoph Bergmeir, Slava Razbash, and Earo Wang. 2017. <em>Forecast: Forecasting Functions for Time Series and Linear Models</em>. <a href="https://CRAN.R-project.org/package=forecast" class="uri">https://CRAN.R-project.org/package=forecast</a>.</p>
 </div>
 </div>
             </section>
@@ -341,17 +370,18 @@ fcast_arima &lt;-<span class="st"> </span><span class="kw">forecast</span>(model
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -359,10 +389,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-R_para_predecir.Rmd",
+"link": "https://github.com/rstudio/bookdown-rquer/edit/master/03-R_para_predecir.Rmd",
 "text": "Edit"
 },
-"download": ["bookdown-enric.pdf", "bookdown-enric.epub"],
+"download": ["bookdown-rquer.pdf", "bookdown-rquer.epub"],
 "toc": {
 "collapse": "subsection"
 }
